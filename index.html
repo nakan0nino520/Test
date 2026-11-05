@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#05050f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Oneiro">
+<title>Oneiro · Tiếp tục giấc mơ</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%238B88FF'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23fff' opacity='.6'/%3E%3C/svg%3E">
+<style>
+/* ================= LIQUID GLASS iOS 26 ================= */
+:root{
+  --ac:#8B88FF;--bg:#05050f;--fg:#f4f4ff;--blur:34px;--r:28px;--ri:calc(var(--r) - 10px);
+  --line:rgba(255,255,255,.14);--mute:rgba(244,244,255,.62);
+  --sp:cubic-bezier(.34,1.56,.64,1);--ea:cubic-bezier(.22,1,.36,1);
+  --mx:28%;--my:18%;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"Noto Sans",sans-serif;
+  color-scheme:dark
+}
+@property --ac{syntax:"<color>";inherits:true;initial-value:#8B88FF}
+@property --bg{syntax:"<color>";inherits:true;initial-value:#05050f}
+@property --b2{syntax:"<color>";inherits:true;initial-value:#E056C8}
+@property --b3{syntax:"<color>";inherits:true;initial-value:#2BC4C4}
+@property --g1{syntax:"<color>";inherits:true;initial-value:rgba(255,255,255,.15)}
+@property --g2{syntax:"<color>";inherits:true;initial-value:rgba(255,255,255,.04)}
+@property --g3{syntax:"<color>";inherits:true;initial-value:rgba(255,255,255,.09)}
+@property --e1{syntax:"<color>";inherits:true;initial-value:rgba(255,255,255,.75)}
+@property --e2{syntax:"<color>";inherits:true;initial-value:rgba(255,255,255,.4)}
+@property --lx{syntax:"<color>";inherits:true;initial-value:rgba(255,255,255,.22)}
+@property --bo{syntax:"<number>";inherits:true;initial-value:.5}
+@property --gl{syntax:"<number>";inherits:true;initial-value:1.08}
+@property --gs{syntax:"<percentage>";inherits:true;initial-value:190%}
+
+[hidden]{display:none!important}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font:400 16px/1.5 var(--font);-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
+:root{transition:--ac 1.2s ease,--bg 1.2s ease,--b2 1.2s ease,--b3 1.2s ease,--bo 1.2s ease,--g1 1.2s ease,--g2 1.2s ease,--g3 1.2s ease,--e1 1.2s ease,--e2 1.2s ease,--lx 1.2s ease,--blur 1.2s ease,--gs 1.2s ease,--gl 1.2s ease,--r 1.2s ease}
+
+/* Nền động */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg i{position:absolute;border-radius:50%;filter:blur(90px);opacity:var(--bo);animation:dr 28s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:70vmax;height:70vmax;top:-30vmax;left:-25vmax;background:var(--ac)}
+.bg i:nth-child(2){width:60vmax;height:60vmax;bottom:-25vmax;right:-20vmax;background:var(--b2);animation-direction:alternate-reverse}
+.bg i:nth-child(3){width:40vmax;height:40vmax;top:40%;left:45%;background:var(--b3);opacity:calc(var(--bo)*.5)}
+.stars{position:fixed;inset:0;z-index:-1;background-image:radial-gradient(1px 1px at 20% 30%,#fff,transparent),radial-gradient(1px 1px at 70% 20%,#fff,transparent),radial-gradient(1.5px 1.5px at 40% 70%,#fff,transparent),radial-gradient(1px 1px at 85% 60%,#fff,transparent),radial-gradient(1px 1px at 10% 85%,#fff,transparent);opacity:.5;animation:tw 6s ease-in-out infinite alternate}
+@keyframes dr{to{transform:translate(8vmax,-6vmax) scale(1.15)}}@keyframes tw{to{opacity:.15}}
+body.noglow .bg i{opacity:0}body.noglow .stars{display:none}
+
+/* Glass */
+.glass{position:relative;border-radius:var(--r);text-shadow:0 1px 2px rgba(0,0,0,.22);
+background:linear-gradient(145deg,var(--g1),var(--g2) 46%,var(--g3));
+-webkit-backdrop-filter:blur(var(--blur)) saturate(var(--gs)) brightness(var(--gl));
+backdrop-filter:blur(var(--blur)) saturate(var(--gs)) brightness(var(--gl));
+box-shadow:inset 1px 1px 0 color-mix(in srgb,var(--e1) 55%,transparent),inset -1px -1px 0 rgba(255,255,255,.1),inset 0 0 26px color-mix(in srgb,var(--lx) 20%,transparent),0 14px 44px rgba(0,0,0,.4)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;padding:1px;background:linear-gradient(135deg,var(--e1),rgba(255,255,255,0) 30%,rgba(255,255,255,0) 68%,var(--e2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(280px circle at var(--mx) var(--my),var(--lx),transparent 62%);mix-blend-mode:soft-light;opacity:0;transition:opacity .5s}
+body.lg-track .glass::after{opacity:1}
+body.noliquid .glass::before,body.noliquid .glass::after{display:none}
+body.noliquid .glass{background:rgba(255,255,255,.08);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+body.noblur .glass{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(30,30,44,.96)}
+body.noglow .glass{box-shadow:inset 1px 1px 0 rgba(255,255,255,.25)}
+body.lg-tint .glass{background:linear-gradient(145deg,color-mix(in srgb,var(--bg) 68%,var(--fg) 20%),color-mix(in srgb,var(--bg) 80%,var(--fg) 11%));-webkit-backdrop-filter:blur(var(--blur)) saturate(140%);backdrop-filter:blur(var(--blur)) saturate(140%)}
+body.noanim *{transition:none!important;animation:none!important}
+body.night{filter:brightness(.78) sepia(.15) hue-rotate(-15deg)}
+body.high-contrast{--mute:rgba(255,255,255,.86);--line:rgba(255,255,255,.3);--fg:#fff}
+body.high-contrast .glass{background:rgba(20,20,32,.94)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;outline:1px solid rgba(255,255,255,.4)}
+body.compact .card{padding:12px}body.compact .app{gap:10px}body.compact .dream{padding:10px}
+body.one-hand .app{padding-bottom:calc(200px + env(safe-area-inset-bottom))}
+body.one-hand nav{bottom:calc(60px + env(safe-area-inset-bottom))}
+body.focus-mode nav,body.focus-mode header,body.focus-mode body::before{opacity:.15;pointer-events:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(prefers-reduced-transparency:reduce){.glass{-webkit-backdrop-filter:none;backdrop-filter:none;background:color-mix(in srgb,var(--bg) 80%,var(--fg) 14%)!important}}
+@media(prefers-contrast:more){.glass{outline:1px solid var(--fg)}.hint,.pill{color:var(--fg)}}
+
+/* Layout */
+.app{max-width:1180px;margin:auto;display:flex;flex-direction:column;gap:16px;padding:calc(14px + env(safe-area-inset-top)) 16px calc(140px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;gap:12px;padding:12px 18px;border-radius:30px;position:sticky;top:calc(10px + env(safe-area-inset-top));z-index:40}
+header h1{font-size:1.25em;margin:0;flex:1;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 65% 35%,#fff,var(--ac) 45%,#3a2bb0);box-shadow:0 0 24px var(--ac);flex:none}
+.pill{font-size:.8em;color:var(--mute);background:rgba(255,255,255,.1);padding:6px 12px;border-radius:99px;white-space:nowrap}
+
+/* Nav - scrollable horizontally for many tabs */
+nav{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:50;display:flex;padding:6px;border-radius:99px;max-width:calc(100vw - 16px);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;transition:padding .4s var(--sp),gap .4s}
+nav::-webkit-scrollbar{display:none}
+nav .ind{position:absolute;border-radius:99px;background:rgba(255,255,255,.17);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 2px 12px rgba(0,0,0,.25);transition:all .55s var(--sp);pointer-events:none}
+html[data-th] nav .ind{background:color-mix(in srgb,var(--ac) 26%,rgba(255,255,255,.12))}
+nav button{all:unset;box-sizing:border-box;position:relative;z-index:1;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px clamp(8px,3vw,16px);border-radius:99px;font-size:.68em;color:var(--mute);transition:color .3s,transform .3s var(--sp),padding .45s var(--sp),gap .45s,font-size .3s;white-space:nowrap;flex:none}
+nav button:active{transform:scale(.9)}
+nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+nav button[aria-selected=true]{color:var(--fg)}
+nav button[aria-selected=true] svg{color:var(--ac)}
+nav.min{padding:5px}nav.min button{font-size:0;gap:0;padding:12px 18px}
+nav .ind.sq{animation:lgsq .65s cubic-bezier(.34,1.56,.64,1)}
+@keyframes lgsq{25%{transform:scale(1.22,.82)}55%{transform:scale(.95,1.08)}}
+
+body::before,body::after{content:"";position:fixed;left:0;right:0;z-index:30;pointer-events:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+body::before{top:0;height:calc(92px + env(safe-area-inset-top));background:linear-gradient(rgba(0,0,0,.4),transparent);-webkit-mask-image:linear-gradient(#000 30%,transparent);mask-image:linear-gradient(#000 30%,transparent)}
+body::after{bottom:0;height:calc(120px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(0,0,0,.45));-webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%)}
+body.noblur::before,body.noblur::after{backdrop-filter:none;-webkit-backdrop-filter:none}
+@media(min-width:1024px){body::after{display:none}}
+
+/* Views */
+.view{display:none}
+.view.on{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px;align-items:start}
+.view.on>*{animation:in .65s var(--ea) both}
+.view.on>:nth-child(2){animation-delay:.06s}
+.view.on>:nth-child(3){animation-delay:.12s}
+.view.on>:nth-child(n+4){animation-delay:.18s}
+@keyframes in{from{opacity:0;transform:translateY(18px) scale(.985)}}
+.wide{grid-column:1/-1}.card{padding:20px}
+.card h2{margin:0 0 12px;font-size:1.08em;letter-spacing:-.01em}
+.card h3{margin:14px 0 6px;font-size:.95em}
+.hint{color:var(--mute);font-size:.88em}
+.big{font-size:1.5em;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+
+/* Controls */
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 18px;border-radius:99px;background:rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.35);font-weight:600;font-size:.9em;color:var(--fg);transition:transform .35s var(--sp),background .25s;user-select:none}
+.btn:hover{background:rgba(255,255,255,.18)}
+.btn:active{transform:scale(.94)}
+.btn.p{background:var(--fg);color:var(--bg);box-shadow:0 6px 22px rgba(255,255,255,.2)}
+.btn.on{background:color-mix(in srgb,var(--ac) 50%,transparent)}
+.btn.sm{padding:7px 13px;font-size:.82em}
+.btn.w{width:100%}
+.btn.danger{background:rgba(255,107,96,.2);color:#FF6B60}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row.sp{justify-content:space-between}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+input[type=text],input[type=time],input[type=date],input[type=number],input[type=password],select,textarea{width:100%;color:var(--fg);background:rgba(255,255,255,.09);border:1px solid var(--line);border-radius:16px;padding:12px 15px;font:inherit;margin:4px 0}
+textarea{min-height:110px;resize:vertical}
+label.l{display:block;font-size:.84em;color:var(--mute);margin-top:10px}
+select{appearance:none;-webkit-appearance:none}select option{color:#000}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:34px;margin:0;background:none}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--ac) 0 calc(14px + (100% - 28px)*var(--p,0)),rgba(255,255,255,.16) 0)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-11px;border-radius:50%;background:linear-gradient(#fff,#e6e6ec);box-shadow:0 3px 10px rgba(0,0,0,.45)}
+.tg{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.tg:last-child{border:0}
+.tg input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;width:52px;height:32px;border-radius:99px;background:rgba(255,255,255,.18);position:relative;cursor:pointer;transition:background .35s;margin:0}
+.tg input[type=checkbox]::after{content:"";position:absolute;top:2px;left:2px;width:28px;height:28px;border-radius:50%;background:#fff;transition:left .4s var(--sp);box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.tg input[type=checkbox]:checked{background:#30D158}
+.tg input[type=checkbox]:checked::after{left:22px}
+.chip{display:inline-block;padding:4px 11px;border-radius:99px;background:rgba(255,255,255,.1);font-size:.78em;color:var(--mute)}
+.chip.a{background:color-mix(in srgb,var(--ac) 35%,transparent);color:var(--fg)}
+.chip.tag{cursor:pointer}
+.chip.tag.on{background:color-mix(in srgb,var(--ac) 60%,transparent);color:#fff}
+.dream{padding:16px;margin-bottom:12px;border-radius:var(--ri);background:rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.dream:last-child{margin:0}
+.dream p{margin:6px 0 10px;color:var(--mute);font-size:.92em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dream p.open{-webkit-line-clamp:unset}
+.dream.sensitive{filter:blur(8px);transition:filter .3s}
+.dream.sensitive.reveal{filter:none}
+mark.hl{background:color-mix(in srgb,var(--ac) 60%,transparent);color:#fff;border-radius:3px;padding:0 2px}
+.breath{width:130px;height:130px;margin:10px auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--ac) 50%,transparent 72%);box-shadow:0 0 60px var(--ac);transform:scale(.7);opacity:.85}
+.breath.go{animation:br 10s ease-in-out infinite}
+.breath.breath478{animation:br478 19s ease-in-out infinite}
+@keyframes br{0%,100%{transform:scale(.7)}40%{transform:scale(1.15)}}
+@keyframes br478{0%{transform:scale(.7)}21%{transform:scale(1.15)}58%{transform:scale(1.15)}100%{transform:scale(.7)}}
+.bar{height:6px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ac);transition:width 1s linear}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px}
+.stat b{display:block;font-size:1.9em;letter-spacing:-.03em;text-shadow:0 0 22px var(--ac)}
+.hist{display:flex;align-items:flex-end;gap:5px;height:70px;margin-top:12px}
+.hist i{flex:1;border-radius:4px 4px 0 0;background:var(--ac);min-height:3px;opacity:.85}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.seg .btn{flex:none}
+details{border-top:1px solid var(--line)}
+details summary{cursor:pointer;font-weight:600;padding:14px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"";width:18px;height:18px;flex:none;background:var(--mute);transition:transform .35s var(--sp);
+-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat}
+details[open] summary::after{transform:rotate(180deg)}
+details div{padding:0 0 14px;color:var(--mute);font-size:.92em}
+.persona{padding:20px;border-radius:var(--ri);background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 55%,transparent),color-mix(in srgb,var(--b2) 30%,transparent));box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+input[type=color]{appearance:none;-webkit-appearance:none;width:48px;height:48px;border:0;border-radius:50%;padding:0;background:none}
+input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+input[type=color]::-webkit-color-swatch{border:2px solid rgba(255,255,255,.45);border-radius:50%}
+#toast{position:fixed;top:calc(14px + env(safe-area-inset-top));left:50%;transform:translate(-50%,-140%);z-index:99;padding:11px 22px;border-radius:99px;font-size:.9em;pointer-events:none;transition:transform .55s var(--sp),opacity .3s,visibility .55s;background:rgba(40,40,60,.88);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 30px rgba(0,0,0,.4);max-width:90vw;text-align:center}
+#toast.on{transform:translate(-50%,0)}
+#toast:not(.on){opacity:0;visibility:hidden}
+
+/* FAB */
+.fab{position:fixed;right:calc(16px + env(safe-area-inset-right));bottom:calc(90px + env(safe-area-inset-bottom));z-index:45;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:22px;color:#fff;background:color-mix(in srgb,var(--ac) 75%,#000);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 28px color-mix(in srgb,var(--ac) 50%,transparent);transition:transform .35s var(--sp)}
+.fab:active{transform:scale(.9)}
+
+/* Swatches */
+#cAc{display:none}
+.sw{display:flex;justify-content:space-between;width:100%;margin-top:8px;gap:6px;flex-wrap:wrap}
+.sw button{all:unset;box-sizing:border-box;width:32px;height:32px;border-radius:50%;cursor:pointer;display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 2px 8px rgba(0,0,0,.35);transition:transform .35s var(--sp),box-shadow .25s}
+.sw button:active{transform:scale(.88)}
+.sw button[aria-pressed=true]{box-shadow:0 0 0 2px var(--bg),0 0 0 4px #fff}
+.sw svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .2s}
+.sw button[aria-pressed=true] svg{opacity:1}
+/* Theme thumbnails */
+.thp{display:flex;gap:14px;overflow-x:auto;padding:6px 4px 4px;margin:0 -4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;-webkit-mask:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.thp::-webkit-scrollbar{display:none}
+.thp button{all:unset;box-sizing:border-box;flex:none;width:64px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;font-size:.72em;color:var(--mute);text-align:center;transition:color .25s}
+.thp .o{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 4px 14px rgba(0,0,0,.35);transition:transform .35s var(--sp),box-shadow .25s}
+.thp .o svg{width:20px;height:20px}
+.thp button:active .o{transform:scale(.9)}
+.thp button[aria-pressed=true]{color:var(--fg)}
+.thp button[aria-pressed=true] .o{box-shadow:0 0 0 2px var(--bg),0 0 0 4px rgba(255,255,255,.9)}
+/* Theme data-attrs */
+html[data-th=calm]{--ac:#8B88FF;--bg:#05050f;--b2:#E056C8;--b3:#2BC4C4;--bo:.5;--g1:rgba(255,255,255,.15);--g2:rgba(255,255,255,.04);--g3:rgba(255,255,255,.09);--e1:rgba(255,255,255,.75);--e2:rgba(255,255,255,.4);--lx:rgba(255,255,255,.22);--blur:34px;--gs:190%;--gl:1.08;--r:28px}
+html[data-th=love]{--ac:#FF6B93;--bg:#0e050a;--b2:#C2416B;--b3:#FF9A8B;--bo:.42;--g1:rgba(255,140,170,.24);--g2:rgba(255,200,215,.06);--g3:rgba(255,120,150,.14);--e1:rgba(255,215,225,.8);--e2:rgba(255,150,180,.5);--lx:rgba(255,170,195,.32);--blur:40px;--gs:210%;--gl:1.1;--r:34px}
+html[data-th=joy]{--ac:#FFB340;--bg:#0e0a04;--b2:#FF8A4C;--b3:#7BD389;--bo:.4;--g1:rgba(255,225,150,.22);--g2:rgba(255,255,255,.05);--g3:rgba(255,200,120,.12);--e1:rgba(255,245,205,.85);--e2:rgba(255,220,150,.5);--lx:rgba(255,235,165,.34);--blur:26px;--gs:230%;--gl:1.14;--r:30px;--sp:cubic-bezier(.3,1.8,.5,1)}
+html[data-th=hype]{--ac:#FF7A45;--bg:#0e0605;--b2:#E5487F;--b3:#FFC94D;--bo:.45;--g1:rgba(255,150,90,.24);--g2:rgba(255,80,160,.06);--g3:rgba(255,210,90,.14);--e1:rgba(255,225,180,.85);--e2:rgba(255,160,120,.5);--lx:rgba(255,190,120,.38);--blur:22px;--gs:250%;--gl:1.12;--r:26px;--sp:cubic-bezier(.3,1.8,.5,1)}
+html[data-th=fear]{--ac:#B5485D;--bg:#07040a;--b2:#4B2A7A;--b3:#1C4F55;--bo:.32;--g1:rgba(150,55,80,.16);--g2:rgba(15,8,25,.2);--g3:rgba(70,30,110,.14);--e1:rgba(220,130,150,.4);--e2:rgba(120,60,150,.3);--lx:rgba(200,90,110,.14);--blur:46px;--gs:110%;--gl:.92;--r:20px;--sp:cubic-bezier(.25,.8,.3,1)}
+html[data-th=sad]{--ac:#6F9BFF;--bg:#050811;--b2:#3A5A9C;--b3:#6B7C99;--bo:.32;--g1:rgba(130,160,225,.18);--g2:rgba(150,170,210,.05);--g3:rgba(100,130,190,.12);--e1:rgba(195,215,255,.5);--e2:rgba(140,170,230,.3);--lx:rgba(150,180,255,.16);--blur:52px;--gs:120%;--gl:1;--r:30px;--sp:cubic-bezier(.25,.8,.3,1)}
+html[data-th=odd]{--ac:#A78BFA;--bg:#070511;--b2:#2DD4BF;--b3:#F472B6;--bo:.42;--g1:rgba(170,140,255,.2);--g2:rgba(80,230,210,.05);--g3:rgba(255,120,200,.14);--e1:rgba(215,195,255,.8);--e2:rgba(255,170,225,.5);--lx:rgba(190,170,255,.3);--blur:34px;--gs:260%;--gl:1.1;--r:32px}
+</style></head><body>
+<div class="bg"><i></i><i></i><i></i></div><div class="stars"></div><div id="toast" role="status"></div>
+
+<nav class="glass" id="nav" role="tablist"><i class="ind" id="ind"></i></nav>
+
+<div class="app">
+<header class="glass">
+  <div class="logo"></div>
+  <h1 id="ttl">Tối nay</h1>
+  <span class="pill" id="streak"></span>
+</header>
+<main id="views"></main>
+</div>
+
+<button class="fab" id="fabQuick" title="Ghi mảnh vỡ nhanh">✦</button>
+
+<script>
+'use strict';
+/* ================= ICON PACK ================= */
+const NS="http://www.w3.org/2000/svg";
+const ICONS={
+moon:'<path d="M20 14.3A8.5 8.5 0 0 1 9.7 4a8.5 8.5 0 1 0 10.3 10.3z"/><path d="M17 3v3M15.5 4.5h3"/>',
+book:'<path d="M6 3.5h11.5a1 1 0 0 1 1 1V20H8a2 2 0 0 1-2-2z"/><path d="M10 8h5M10 11.5h5"/>',
+search:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2M11 8v3.2l2 1.2"/>',
+sound:'<path d="M4 10v4M8 6.5v11M12 3.5v17M16 7v10M20 10v4"/>',
+chart:'<path d="M4 20V8M10 20V4M16 20v-9M22 20V6"/>',
+user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/>',
+gear:'<circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
+check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+flame:'<path fill="currentColor" stroke="none" d="M12 2.2c.6 3.3 4.7 5.5 4.7 10A4.7 4.7 0 0 1 12 17a4.7 4.7 0 0 1-4.7-4.8c0-1.7.8-3 1.6-4 .2 1.1.8 1.8 1.6 2C10.3 7.4 10.8 4.5 12 2.2z"/>',
+mic:'<rect x="9.2" y="3" width="5.6" height="11" rx="2.8"/><path d="M6 11.5a6 6 0 0 0 12 0M12 17.5V21"/>',
+play:'<path fill="currentColor" stroke="none" d="M8 5.6c0-1 1.1-1.6 1.9-1.1l9 5.8c.7.5.7 1.6 0 2.1l-9 5.8c-.8.5-1.9-.1-1.9-1.1z"/>',
+stop:'<rect x="6" y="6" width="12" height="12" rx="3.2" fill="currentColor" stroke="none"/>',
+star:'<path fill="currentColor" stroke-width="1.3" d="M12 3.5l2.5 5.3 5.8.8-4.2 4.1 1 5.8-5.1-2.7-5.1 2.7 1-5.8-4.2-4.1 5.8-.8z"/>',
+eye:'<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.9"/>',
+trash:'<path d="M4 6h16M9 6V4h6v2M7 6v13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V6"/>',
+edit:'<path d="M4 20h4l10-10-4-4L4 16v4zM14 6l4 4"/>',
+undo:'<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>',
+download:'<path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>',
+upload:'<path d="M12 21V9M7 14l5-5 5 5M4 3h16"/>',
+share:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 11L15.5 7M8.5 13L15.5 17"/>',
+lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/>',
+sparkle:'<path fill="currentColor" stroke="none" d="M10 3.5l1.7 4.8 4.8 1.7-4.8 1.7L10 16.5l-1.7-4.8L3.5 10l4.8-1.7zM18 14l.8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8z"/>',
+target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>',
+brush:'<path d="M4 20c1-2 3-3 5-3s3-2 3-4 2-4 4-6 4-2 4-2-1 3-2 4-4 3-6 5-2 5-4 6-4 0-4 0z"/>',
+image:'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/>',
+mic2:'<rect x="9" y="3" width="6" height="12" rx="3"/><path d="M12 15v3M8 18h8"/>',
+tag:'<path d="M3 12V3h9l9 9-9 9z"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/>',
+pin:'<path d="M12 21V12"/><path d="M8 8a4 4 0 0 1 8 0c0 3-4 4-4 4s-4-1-4-4z"/>',
+clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+warn:'<path d="M12 4l9 15.5H3z"/><path d="M12 10v4.2M12 17h.01"/>',
+backup:'<path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v5h-5M6 21v-5h5"/>',
+cloud:'<path d="M6 18a4 4 0 1 1 .8-7.9A6 6 0 0 1 18 9a4 4 0 1 1 0 9z"/>',
+code:'<path d="M8 7L3 12l5 5M16 7l5 5-5 5"/>',
+print:'<path d="M6 9V3h12v6M6 18H4v-7h16v7h-2"/><rect x="6" y="14" width="12" height="7"/>',
+key:'<circle cx="8" cy="12" r="4"/><path d="M12 12h10M18 12v3M15 12v2"/>',
+finger:'<path d="M12 3a4 4 0 0 0-4 4v3M12 3a4 4 0 0 1 4 4v3M12 21a7 7 0 0 1-7-7v-3M12 21a7 7 0 0 0 7-7v-3M8 12v2a4 4 0 0 0 8 0v-2"/>',
+qr:'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 20h1v1h-1zM14 20h2M20 14v2"/>',
+lang:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+contrast:'<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/>',
+hand:'<path d="M8 12V6a2 2 0 0 1 4 0v5M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v9a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6v-4a2 2 0 0 1 4 0"/>',
+table:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>',
+moon2:'<path fill="currentColor" stroke="none" d="M20 14.3A8.5 8.5 0 0 1 9.7 4a8.5 8.5 0 1 0 10.3 10.3z"/>',
+drop:'<path d="M12 3.5s6 6.4 6 10.5a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5z"/>',
+coffee:'<path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 10h2a2 2 0 0 1 0 4h-2M8 3v3M12 3v3"/>',
+walk:'<circle cx="13" cy="4" r="2"/><path d="M13 7l-3 4 2 4v6M13 7l3 3 3 1M12 15l-3 5"/>',
+chat:'<path d="M4 5h16v11H8l-4 4z"/>',
+graduation:'<path d="M2 9l10-4 10 4-10 4z"/><path d="M6 11v5c0 2 3 3 6 3s6-1 6-3v-5M22 9v6"/>',
+music:'<circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M9 18V6l12-2v14"/>',
+wave:'<path d="M3 12c2-4 4 4 6 0s4-4 6 0 4 4 6 0"/>',
+calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/>',
+network:'<circle cx="12" cy="12" r="3"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="20" cy="20" r="2"/><path d="M6 6l4 4M18 6l-4 4M6 18l4-4M18 18l-4-4"/>',
+flow:'<rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h6a3 3 0 0 1 3 3v6"/>',
+info:'<circle cx="12" cy="12" r="9"/><path d="M12 8v.5M12 11v6"/>',
+globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 0 0 18M12 3a15 15 0 0 1 0 18"/>'
+};
+function icon(name,cls){const s=document.createElementNS(NS,'svg');s.setAttribute('viewBox','0 0 24 24');s.setAttribute('fill','none');s.setAttribute('stroke','currentColor');s.setAttribute('stroke-width','1.8');s.setAttribute('stroke-linecap','round');s.setAttribute('stroke-linejoin','round');if(cls)s.setAttribute('class',cls);s.innerHTML=ICONS[name]||'';return s.outerHTML}
+
+/* ================= DB ================= */
+const SCHEMA=4;
+const DEF={
+  schemaVersion:SCHEMA,
+  dreams:[], self:{name:"",tr:"",sk:"",lk:"",wd:""}, target:null, bt:"23:00",
+  chk:{}, dreamSigns:[], characters:[], places:[], goals:[], quests:[],
+  customPrompts:[], tagOrder:[], soundPresets:[], soundMixer:{binaural:1,rain:.35,brown:.5,pink:0,custom:.4},
+  soundCustom:[], goalsW:{dreams:7,lucid:2,rc:14,streak:7},
+  challenges:[], habits:{}, sleepLog:[], incidents:[],
+  profile:"default", profiles:["default"],
+  researchMode:0,
+  draft:null, undoStack:[], backups:[],
+  set:{
+    liquid:1,blur:1,glow:1,anim:1,ac:"#8B88FF",acu:0,th:"auto",
+    night:0,safe:0,compact:0,oneHand:0,highContrast:0,
+    focus:0, biometric:0, pinHash:null, pinSalt:null,
+    navOrder:["tonight","journal","recall","sound","analytics","me"],
+    lang:"vi", waterRemind:0, eyeRemind:0,
+    wbtbEnabled:1, rcAuto:0, rcInterval:90,
+    lastBackupAt:null, lastCleanupAt:null,
+    reducedMotion:0, weeklyAI:0, autoBackup:0
+  }
+};
+const LS='oneiro.v4';
+let DB=JSON.parse(JSON.stringify(DEF));
+try{
+  const raw=localStorage.getItem(LS)||localStorage.getItem('oneiro')||'{}';
+  const s=JSON.parse(raw);
+  DB={...DEF,...s};
+  DB.set={...DEF.set,...(s.set||{})};
+  DB.self={...DEF.self,...(s.self||{})};
+  DB.soundMixer={...DEF.soundMixer,...(s.soundMixer||{})};
+  DB.goalsW={...DEF.goalsW,...(s.goalsW||{})};
+}catch{}
+/* Migration */
+(function migrate(){
+  const oldV=DB.schemaVersion||0;
+  if(oldV<SCHEMA){
+    try{DB.backups=(DB.backups||[]);DB.backups.unshift({v:oldV,at:Date.now(),snap:JSON.stringify(DB)});DB.backups=DB.backups.slice(0,3)}catch{}
+    DB.dreams=(DB.dreams||[]).map(d=>({
+      places:[], people:[], bodyFeel:[], tone:null, techniques:[], goals:[],
+      versions:[], sensitive:!!d.sensitive, shared:false, recallScore:d.vivid||5,
+      ...d
+    }));
+    DB.schemaVersion=SCHEMA;
+    saveDB();
+  }
+})();
+const saveDB=()=>{try{localStorage.setItem(LS,JSON.stringify(DB))}catch(e){toast("Bộ nhớ đầy")}};
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const day=d=>{const x=d?new Date(d):new Date();return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0")};
+const nowIso=()=>new Date().toISOString();
+const fmtDate=iso=>{try{return new Date(iso).toLocaleDateString('vi-VN')}catch{return iso}};
+let toastT;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),2400)}
+
+/* ================= I18N ================= */
+const I18N={
+  vi:{tonight:"Tối nay",journal:"Nhật ký",recall:"Nhớ lại",sound:"Âm thanh",analytics:"Phân tích",me:"Hồ sơ",settings:"Cài đặt"},
+  en:{tonight:"Tonight",journal:"Journal",recall:"Recall",sound:"Sound",analytics:"Analytics",me:"Profile",settings:"Settings"}
+};
+const T=k=>(I18N[DB.set.lang]||I18N.vi)[k]||k;
+
+/* ================= TABS ================= */
+const ALL_TABS=[
+  {id:"tonight",icon:"moon"},
+  {id:"journal",icon:"book"},
+  {id:"recall",icon:"search"},
+  {id:"sound",icon:"sound"},
+  {id:"analytics",icon:"chart"},
+  {id:"me",icon:"user"}
+];
+const ALL_TAB_TITLES={tonight:"Tối nay",journal:"Nhật ký",recall:"Nhớ lại",sound:"Âm thanh",analytics:"Phân tích",me:"Hồ sơ"};
+const visibleTabs=()=>{const order=DB.set.navOrder||ALL_TABS.map(t=>t.id);return ALL_TABS.filter(t=>order.includes(t.id)).sort((a,b)=>order.indexOf(a.id)-order.indexOf(b.id))};
+let currentTab="tonight";
+
+/* ================= VIEW RENDERERS ================= */
+const VIEWS={
+tonight(){return `
+<section class="card glass wide" id="tHero"></section>
+<section class="card glass" id="tTarget"></section>
+<section class="card glass" id="tMantra"></section>
+<section class="card glass" id="rit"></section>
+<section class="card glass" id="tSleep"></section>
+<section class="card glass" id="tWBTB"></section>
+<section class="card glass" id="tBreath"></section>
+<section class="card glass" id="tCheck"></section>
+<section class="card glass" id="tHabits"></section>
+<section class="card glass" id="tIncubate"></section>
+<section class="card glass" id="tGuides"></section>
+<section class="card glass" id="tRC"></section>
+`},
+journal(){return `
+<section class="card glass" id="jForm"></section>
+<section class="card glass" id="jList"></section>
+<section class="card glass wide" id="jMore"></section>
+`},
+recall(){return `
+<section class="card glass wide"><div class="big">Vừa thức dậy? Đừng cử động.</div><p class="hint">5 phút đầu là thời điểm vàng. Giữ nguyên tư thế, nhắm mắt, để cảm xúc dẫn đường.</p></section>
+<section class="card glass" id="wiz"></section>
+<section class="card glass" id="tech"></section>
+<section class="card glass" id="themes"></section>
+<section class="card glass" id="signs"></section>
+<section class="card glass" id="chars"></section>
+<section class="card glass" id="places"></section>
+`},
+sound(){return `
+<section class="card glass wide" id="sMain"></section>
+<section class="card glass" id="sMixer"></section>
+<section class="card glass" id="sCustom"></section>
+<section class="card glass" id="sPresets"></section>
+`},
+analytics(){return `
+<section class="card glass wide" id="aDash"></section>
+<section class="card glass" id="aMoods"></section>
+<section class="card glass" id="aTags"></section>
+<section class="card glass wide" id="aTimeline"></section>
+<section class="card glass wide" id="aGraph"></section>
+<section class="card glass" id="aSleep"></section>
+<section class="card glass" id="aDebt"></section>
+<section class="card glass" id="aTech"></section>
+<section class="card glass" id="aHabits"></section>
+<section class="card glass wide" id="aReport"></section>
+`},
+me(){return `
+<section class="card glass wide" id="mPersona"></section>
+<section class="card glass" id="mPersonaForm"></section>
+<section class="card glass" id="mStats"></section>
+<section class="card glass" id="mGoals"></section>
+<section class="card glass" id="mChallenge"></section>
+<section class="card glass" id="mBadges"></section>
+<section class="card glass" id="mSkin"></section>
+<section class="card glass" id="mTheme"></section>
+<section class="card glass" id="mColor"></section>
+<section class="card glass" id="mDisplay"></section>
+<section class="card glass" id="mAccess"></section>
+<section class="card glass" id="mNav"></section>
+<section class="card glass" id="mShortcuts"></section>
+<section class="card glass" id="mPrompts"></section>
+<section class="card glass" id="mSecurity"></section>
+<section class="card glass" id="mProfile"></section>
+<section class="card glass" id="mData"></section>
+<section class="card glass wide" id="mAbout"></section>
+`}
+};
+
+/* ================= NAV ================= */
+function buildNav(){
+  const nav=document.getElementById('nav');
+  const order=DB.set.navOrder||[];
+  const tabs=visibleTabs();
+  nav.innerHTML='<i class="ind" id="ind"></i>'+tabs.map(t=>`
+    <button data-v="${t.id}" aria-selected="${t.id===currentTab}">${icon(t.icon)}${ALL_TAB_TITLES[t.id]}</button>`).join('');
+  nav.onclick=e=>{const b=e.target.closest('button');if(b)go(b.dataset.v)};
+  moveInd();
+}
+function moveInd(){
+  const nav=document.getElementById('nav'),ind=document.getElementById('ind');
+  const s=nav.querySelector('button[aria-selected=true]');
+  if(s&&ind){ind.style.cssText=`left:${s.offsetLeft}px;top:${s.offsetTop}px;width:${s.offsetWidth}px;height:${s.offsetHeight}px`}
+}
+function go(id){
+  if(!VIEWS[id])return;
+  currentTab=id;
+  document.getElementById('views').innerHTML=VIEWS[id]();
+  document.getElementById('ttl').textContent=ALL_TAB_TITLES[id]||id;
+  $$('#nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===id));
+  moveInd();
+  // render view content
+  try{
+    if(id==='tonight')renderTonight();
+    if(id==='journal')renderJournal();
+    if(id==='recall')renderRecall();
+    if(id==='sound')renderSound();
+    if(id==='analytics')renderAnalytics();
+    if(id==='me')renderMe();
+  }catch(e){console.error(e)}
+  window.scrollTo({top:0,behavior:DB.set.anim?'smooth':'auto'});
+}
+
+/* ================= COMMON ================= */
+const tgt=()=>DB.dreams.find(d=>d.id===DB.target);
+const stk=()=>{const s=new Set(DB.dreams.map(d=>d.date));let n=0,c=new Date();if(!s.has(day(c)))c.setDate(c.getDate()-1);while(s.has(day(c))){n++;c.setDate(c.getDate()-1)}return n};
+const MOODS=["Bình yên","Tình yêu","Vui","Phấn khích","Sợ hãi","Buồn","Lạ lùng"];
+const MOOD_COLORS={"Bình yên":"#8B88FF","Tình yêu":"#FF6B93","Vui":"#FFB340","Phấn khích":"#FF7A45","Sợ hãi":"#B5485D","Buồn":"#6F9BFF","Lạ lùng":"#A78BFA"};
+const TONE_LIST=["Bình thường","Kỳ ảo","Hồi hộp","Tối tăm","Vui vẻ","Siêu thực"];
+
+function setTh(m){const r=document.documentElement;const K={"Bình yên":"calm","Tình yêu":"love","Vui":"joy","Phấn khích":"hype","Sợ hãi":"fear","Buồn":"sad","Lạ lùng":"odd"};const id=K[m];if(id)r.dataset.th=id;else delete r.dataset.th}
+function applySet(){
+  const b=document.body.classList,s=DB.set,r=document.documentElement.style;
+  if(!s.acu)r.setProperty('--ac',s.ac);
+  b.toggle('noliquid',!s.liquid);b.toggle('noblur',!s.blur);b.toggle('noglow',!s.glow);
+  b.toggle('noanim',!s.anim||s.reducedMotion);
+  b.toggle('night',!!s.night);b.toggle('high-contrast',!!s.highContrast);
+  b.toggle('compact',!!s.compact);b.toggle('one-hand',!!s.oneHand);b.toggle('focus-mode',!!s.focus);
+  if(s.th==='off')setTh(null);else if(s.th==='auto'){const l=[...DB.dreams].sort((a,b)=>b.t-a.t)[0];setTh(l?l.mood:"Bình yên")}else setTh(s.th);
+  moveInd();
+}
+
+/* ================= TONIGHT ================= */
+function mantra(){
+  const t=tgt(),n=DB.self.name||"phiên bản hoàn hảo của mình",sc=t?(t.scene||t.title):"giấc mơ ấy";
+  return `Đêm nay mình sẽ mơ và nhớ giấc mơ. Khi mình thấy ${sc}, mình sẽ nhận ra: “Mình đang mơ!” Mình là ${n}${DB.self.tr?" — "+DB.self.tr:""}. Mình tiếp tục câu chuyện từ chính nơi nó dừng lại.`
+}
+function renderTonight(){
+  const h=new Date().getHours(),t=tgt(),un=DB.dreams.filter(d=>d.unf);
+  document.getElementById('tHero').innerHTML=h<11?
+    `<div class="big">Chào buổi sáng ☀️<br>Ghi lại giấc mơ trước khi nó tan.</div>
+     <div class="row" style="margin-top:14px"><button class="btn p" data-a="go" data-id="journal">Ghi ngay</button><button class="btn" data-a="go" data-id="recall">Mình quên rồi</button></div>`:
+    `<div class="big">${t?"Tối nay, quay lại: “"+esc(t.title)+"”":"Chọn giấc mơ muốn mơ tiếp"}</div>
+     <p class="hint">Làm theo các bước bên dưới. Kiên trì vài đêm — khả năng nhớ và mơ tỉnh tăng dần.</p>`;
+  document.getElementById('tTarget').innerHTML=`<h2>1 · Giấc mơ theo đuổi</h2>`+(t?`<div class="dream"><b>${esc(t.title)}</b><p>Dừng ở: ${esc(t.scene||"(chưa ghi)")}</p></div>`:"")+(un.length?`<select id="pickDream"><option value="">${t?"Đổi giấc mơ…":"Chọn giấc mơ dang dở…"}</option>${un.map(d=>`<option value="${d.id}" ${d.id===DB.target?'selected':''}>${esc(d.title)}</option>`).join('')}</select>`:`<p class="hint">Chưa có giấc mơ dang dở. Ghi ở Nhật ký và bật “Chưa kết thúc”.</p>`);
+  document.getElementById('tMantra').innerHTML=`<h2>2 · Lời hứa trước khi ngủ</h2><p style="font-size:1.02em">${esc(mantra())}</p><p class="hint">Đọc chậm 5–10 lần (MILD).</p><button class="btn sm" data-a="copyMantra">Sao chép</button>`;
+  // Sleep cycle (timezone-aware)
+  const sh=new Date();const [bh,bm]=DB.bt.split(":").map(Number);const bd=new Date();bd.setHours(bh,bm+15,0,0);
+  const f=x=>new Date(bd.getTime()+x*36e5).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'});
+  const tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'—';
+  document.getElementById('tSleep').innerHTML=`<h2>3 · Giờ ngủ & chu kỳ</h2>
+    <label class="l" style="margin:0">Giờ đi ngủ (múi giờ ${tz})</label>
+    <input type="time" id="bt" value="${DB.bt}">
+    <p style="margin:8px 0 4px">Thức cuối chu kỳ 90 phút: <b>${f(4.5)}</b> · <b>${f(6)}</b> · <b>${f(7.5)}</b></p>
+    <p class="hint"><b>WBTB:</b> báo thức <b>${f(5)}</b>, thức 20–30 phút, đọc lại giấc mơ, rồi ngủ lại — giai đoạn REM dài, dễ mơ tỉnh nhất.</p>
+    <button class="btn sm" data-a="setWBTB">Đặt báo thức WBTB</button>`;
+  // WBTB status
+  document.getElementById('tWBTB').innerHTML=`<h2>WBTB thông minh</h2>
+    <div class="tg"><span>Bật nhắc WBTB</span><input type="checkbox" id="wbtbEn" ${DB.set.wbtbEnabled?'checked':''}></div>
+    <div class="tg"><span>Nhắc kiểm tra thực tại tự động (mỗi ${DB.set.rcInterval} phút)</span><input type="checkbox" id="rcAuto" ${DB.set.rcAuto?'checked':''}></div>
+    <div class="row"><button class="btn" data-a="testNotif">Kiểm tra thông báo</button><button class="btn" data-a="rcNow">Kiểm tra thực tại ngay</button></div>`;
+  // 4-7-8 breath
+  document.getElementById('tBreath').innerHTML=`<h2>Hơi thở 4-7-8</h2><p class="hint">Hít 4s · giữ 7s · thở 8s. Giảm lo lắng, dễ vào giấc.</p><div class="breath" id="breath478"></div><button class="btn p w" data-a="b478" style="margin-top:10px">Bắt đầu</button>`;
+  // Checks
+  const c=DB.chk[day()]||{};
+  const L=[["bed","Để điện thoại/sổ cạnh giường"],["pro","Đọc lời hứa 5–10 lần"],["rit","Hoàn tất thiền hình dung"],["wb","Giữ im, ghi ngay khi thức dậy"]];
+  document.getElementById('tCheck').innerHTML=`<h2>4 · Chuẩn bị tối nay</h2>`+L.map(([k,l])=>`<div class="tg"><span>${l}</span><input type="checkbox" data-c="${k}" ${c[k]?"checked":""}></div>`).join('');
+  // Habits
+  const hb=DB.habits[day()]||{};
+  const HL=[["bedtime","Đi ngủ đúng giờ"],["noCaffeine","Không caffeine sau 14h"],["noScreen","Không màn hình 1h trước ngủ"],["water","Uống đủ nước ban ngày"],["exercise","Vận động nhẹ"]];
+  document.getElementById('tHabits').innerHTML=`<h2>Sổ thói quen hôm nay</h2>`+HL.map(([k,l])=>`<div class="tg"><span>${l}</span><input type="checkbox" data-h="${k}" ${hb[k]?"checked":""}></div>`).join('');
+  // Incubation
+  const inc=DB.dreams.length?[...DB.dreams].sort((a,b)=>b.t-a.t)[0]:null;
+  document.getElementById('tIncubate').innerHTML=`<h2>Ủ mộng</h2><p class="hint">Đặt một câu hỏi hoặc mục tiêu trước khi ngủ. Não sẽ hướng tới đó trong mơ.</p>
+    <label class="l">Câu hỏi / mục tiêu</label><textarea id="incText" placeholder="VD: Hôm nay mình muốn bay trên thành phố…">${esc(DB.dreams.incubate||'')}</textarea>
+    <button class="btn p w" data-a="saveInc" style="margin-top:10px">Lưu ý định</button>`;
+  // Guides
+  const guides=[
+    ["MILD — Ghi nhớ để mơ tỉnh","Trước khi ngủ, lặp lại: “Lần tới mình mơ, mình sẽ nhận ra mình đang mơ.” Hình dung mình đang trong giấc mơ gần nhất và nhận ra nó. Lặp đến khi ngủ."],
+    ["WBTB — Thức giữa đêm","Ngủ 4.5–6h, thức dậy 20–30 phút (đọc lại giấc mơ, lặp ý định), rồi ngủ lại. Giai đoạn REM tăng — cơ hội mơ tỉnh cao."],
+    ["SSILD — Quan sát luân phiên","Khi nằm chờ ngủ: tập trung vào mắt (nhắm, mở nhẹ) vài giây → tai (lắng nghe) → cơ thể (cảm nhận). Lặp nhanh 4–5 lần, rồi chậm 4–5 lần, rồi thả lỏng để ngủ."],
+    ["WILD — Đi thẳng vào mơ","Nằm bất động, giữ ý thức trong khi cơ thể ngủ. Khi thấy rung, tiếng ù, hình ảnh — quan sát, không sợ. Bước vào cảnh mơ và kiểm tra thực tại."]
+  ];
+  document.getElementById('tGuides').innerHTML=`<h2>Hướng dẫn mơ tỉnh</h2>`+guides.map(([a,b])=>`<details><summary>${a}</summary><div>${b}</div></details>`).join('');
+  // Reality checks
+  const RC=["Nhìn bàn tay: đếm số ngón. Trong mơ, ngón tay thường lạ.","Nhìn chữ/đồng hồ, quay đi rồi nhìn lại. Trong mơ nó sẽ đổi.","Bịt mũi và thử thở bằng mũi. Trong mơ vẫn thở được.","Hỏi: “Mình đã đến đây bằng cách nào?” Trong mơ thường không nhớ.","Thử bật công tắc đèn. Trong mơ đèn hay không hoạt động đúng."];
+  const btnList=RC.map((r,i)=>`<button class="btn sm" data-a="rcSel" data-id="${i}">${i+1}</button>`).join('');
+  document.getElementById('tRC').innerHTML=`<h2>Kiểm tra thực tại</h2><div class="big" id="rcBox" style="margin:10px 0">Bấm để nhận một bài</div><div class="row">${btnList}<button class="btn p sm" data-a="rcNow">Ngẫu nhiên</button></div>`;
+}
+
+/* ================= JOURNAL ================= */
+let editingId=null,draftTimer=null,undoStack=DB.undoStack||[];
+const fields=['fTitle','fTxt','fScene','fTags'];
+const pendingMood={v:"Bình yên"};
+function renderJournal(){
+  const f=document.getElementById('jForm');
+  f.innerHTML=`<h2 id="fT">${editingId?'Sửa giấc mơ':'Ghi giấc mơ'}</h2>
+  <label class="l">Tiêu đề</label><input type="text" id="fTitle" placeholder="VD: Thành phố trên mây">
+  <div class="row sp"><label class="l" style="margin:10px 0 0">Nội dung</label>
+    <div class="row"><button class="btn sm" data-a="mic">${icon('mic')} Đọc</button><button class="btn sm" data-a="recAudio">${icon('sound')} Ghi âm</button><button class="btn sm" data-a="drawSketch">${icon('brush')} Vẽ</button></div>
+  </div>
+  <textarea id="fTxt" placeholder="Mình thấy… mình cảm thấy… ai đó nói…"></textarea>
+  <label class="l">Cảnh cuối — nơi giấc mơ dừng lại</label>
+  <input type="text" id="fScene" placeholder="VD: đứng trước cánh cửa vàng">
+  <label class="l">Cảm xúc</label><div class="seg" id="fMood"></div>
+  <label class="l">Độ sống động: <b id="fVo">6</b>/10</label>
+  <input type="range" id="fVivid" min="1" max="10" value="6">
+  <label class="l">Điểm nhớ được: <b id="fRc">5</b>/10</label>
+  <input type="range" id="fRecallScore" min="1" max="10" value="5">
+  <label class="l">Giọng điệu</label><div class="seg" id="fTone"></div>
+  <label class="l">Thẻ (cách nhau dấu phẩy)</label>
+  <input type="text" id="fTags" placeholder="bay, nhà cũ, người lạ">
+  <div class="row" id="fSugg"></div>
+  <label class="l">Địa điểm trong mơ (cách nhau dấu phẩy)</label>
+  <input type="text" id="fPlaces" placeholder="nhà cũ, biển mây">
+  <label class="l">Nhân vật (cách nhau dấu phẩy)</label>
+  <input type="text" id="fPeople" placeholder="mẹ, người lạ, Kael">
+  <label class="l">Cảm giác cơ thể</label><div class="seg" id="fBody"></div>
+  <label class="l">Mục tiêu trong mơ (chọn nếu đã đạt)</label><div class="row" id="fGoals"></div>
+  <label class="l">Kỹ thuật đã dùng</label><div class="seg" id="fTech"></div>
+  <div class="tg"><span>Chưa kết thúc — muốn mơ tiếp</span><input type="checkbox" id="fUnf"></div>
+  <div class="tg"><span>Mơ tỉnh (biết mình đang mơ)</span><input type="checkbox" id="fLuc"></div>
+  <div class="tg"><span>Mảnh vỡ</span><input type="checkbox" id="fFrag"></div>
+  <div class="tg"><span>Ác mộng — cần xử lý an toàn</span><input type="checkbox" id="fNight"></div>
+  <div class="tg"><span>Nội dung nhạy cảm</span><input type="checkbox" id="fSens"></div>
+  <div class="tg"><span>Tiếp nối giấc mơ đang theo đuổi</span><input type="checkbox" id="fPar"></div>
+  <div class="row" style="margin-top:14px"><button class="btn p" data-a="save" style="flex:1">Lưu</button><button class="btn" data-a="cancel" id="fCancel" hidden>Hủy sửa</button><button class="btn" data-a="undo" title="Hoàn tác">${icon('undo')}</button></div>
+  <p class="hint" id="draftState"></p>`;
+  renderMoodSeg();renderToneSeg();renderBodySeg();renderTechSeg();renderGoalsPicker();
+  // load dream if editing
+  if(editingId){
+    const d=DB.dreams.find(x=>x.id===editingId);if(d){
+      document.getElementById('fTitle').value=d.title||'';
+      document.getElementById('fTxt').value=d.txt||'';
+      document.getElementById('fScene').value=d.scene||'';
+      document.getElementById('fTags').value=(d.tags||[]).join(', ');
+      document.getElementById('fPlaces').value=(d.places||[]).join(', ');
+      document.getElementById('fPeople').value=(d.people||[]).join(', ');
+      document.getElementById('fUnf').checked=!!d.unf;
+      document.getElementById('fLuc').checked=!!d.luc;
+      document.getElementById('fFrag').checked=!!d.frag;
+      document.getElementById('fNight').checked=!!d.nightmare;
+      document.getElementById('fSens').checked=!!d.sensitive;
+      document.getElementById('fPar').checked=!!d.par;
+      document.getElementById('fVivid').value=d.vivid||6;
+      document.getElementById('fVo').textContent=d.vivid||6;
+      document.getElementById('fRecallScore').value=d.recallScore||5;
+      document.getElementById('fRc').textContent=d.recallScore||5;
+      pendingMood.v=d.mood||'Bình yên';
+      renderMoodSeg();renderToneSeg();renderBodySeg();renderTechSeg();renderGoalsPicker(d);
+    }
+  }else{
+    // load draft
+    if(DB.draft){try{
+      const d=DB.draft;if(d.fTitle)document.getElementById('fTitle').value=d.fTitle;
+      if(d.fTxt)document.getElementById('fTxt').value=d.fTxt;
+      if(d.fScene)document.getElementById('fScene').value=d.fScene;
+      document.getElementById('draftState').textContent='Đã khôi phục nháp';
+    }catch{}}
+  }
+  // autosave draft
+  fields.forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',()=>{
+    clearTimeout(draftTimer);draftTimer=setTimeout(()=>{
+      DB.draft={fTitle:document.getElementById('fTitle').value,fTxt:document.getElementById('fTxt').value,fScene:document.getElementById('fScene').value,fTags:document.getElementById('fTags').value,at:Date.now()};
+      saveDB();document.getElementById('draftState').textContent='Đã lưu nháp · '+new Date().toLocaleTimeString('vi-VN');
+    },800);
+  })});
+  document.getElementById('fVivid').oninput=e=>{document.getElementById('fVo').textContent=e.target.value};
+  document.getElementById('fRecallScore').oninput=e=>{document.getElementById('fRc').textContent=e.target.value};
+  document.getElementById('fTags').addEventListener('input',e=>{renderTagSuggestions(e.target.value)});
+  renderTagSuggestions('');
+  renderJournalList();
+  renderJMore();
+}
+function renderMoodSeg(){
+  const el=document.getElementById('fMood');if(!el)return;
+  el.innerHTML=MOODS.map(m=>`<button class="btn sm ${m===pendingMood.v?'on':''}" data-a="mood" data-id="${m}">${m}</button>`).join('');
+}
+function renderToneSeg(){
+  const el=document.getElementById('fTone');if(!el)return;
+  el.innerHTML=TONE_LIST.map(m=>`<button class="btn sm ${m===(pendingMood.tone||'')?'on':''}" data-a="tone" data-id="${m}">${m}</button>`).join('');
+}
+function renderBodySeg(){
+  const el=document.getElementById('fBody');if(!el)return;
+  const L=['Nhẹ','Nặng','Bay','Tê','Nóng','Lạnh','Đau','Bình thường'];
+  el.innerHTML=L.map(m=>`<button class="btn sm" data-a="body" data-id="${m}">${m}</button>`).join('');
+}
+function renderTechSeg(){
+  const el=document.getElementById('fTech');if(!el)return;
+  const L=['MILD','WBTB','SSILD','WILD'];
+  el.innerHTML=L.map(m=>`<button class="btn sm" data-a="tech" data-id="${m}">${m}</button>`).join('');
+}
+function renderGoalsPicker(d){
+  const el=document.getElementById('fGoals');if(!el)return;
+  el.innerHTML=(DB.goals||[]).map(g=>`<button class="btn sm ${d&&d.goals&&d.goals.includes(g.id)?'on':''}" data-a="pickGoal" data-id="${g.id}">${esc(g.text)}</button>`).join('')||'<span class="hint">Chưa có mục tiêu nào</span>';
+}
+function renderTagSuggestions(v){
+  const el=document.getElementById('fSugg');if(!el)return;
+  const used=new Set(DB.dreams.flatMap(d=>d.tags||[]));
+  const typed=(v||'').split(',').map(s=>s.trim()).filter(Boolean);
+  const freq={};DB.dreams.forEach(d=>(d.tags||[]).forEach(t=>freq[t]=(freq[t]||0)+1));
+  const list=[...used].filter(t=>!typed.includes(t)).sort((a,b)=>(freq[b]||0)-(freq[a]||0)).slice(0,10);
+  el.innerHTML=list.length?list.map(t=>`<button class="btn sm" data-a="addTag" data-id="${esc(t)}">+ ${esc(t)}</button>`).join(''):'';
+}
+function renderJournalList(){
+  const el=document.getElementById('jList');if(!el)return;
+  const q=(document.getElementById('jq')?.value||'').toLowerCase().trim();
+  const filter=(window.journalFilter||'all');
+  let list=[...DB.dreams].sort((a,b)=>b.t-a.t);
+  if(filter==='unf')list=list.filter(d=>d.unf);
+  if(filter==='luc')list=list.filter(d=>d.luc);
+  if(filter==='frag')list=list.filter(d=>d.frag);
+  if(filter==='night')list=list.filter(d=>d.nightmare);
+  if(q)list=list.filter(d=>((d.title||'')+' '+(d.txt||'')+' '+(d.scene||'')+' '+((d.tags||[]).join(' '))).toLowerCase().includes(q));
+  const hl=txt=>q?String(txt).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark class="hl">$1</mark>'):esc(txt);
+  el.innerHTML=`
+    <h2>Kho giấc mơ</h2>
+    <input type="text" id="jq" placeholder="Tìm trong nhật ký… (hỗ trợ tô sáng)" value="${esc(q)}">
+    <div class="seg" id="jflt">
+      ${[['all','Tất cả'],['unf','Dang dở'],['luc','Mơ tỉnh'],['frag','Mảnh vỡ'],['night','Ác mộng']].map(([k,l])=>`<button class="btn sm ${filter===k?'on':''}" data-a="flt" data-id="${k}">${l}</button>`).join('')}
+    </div>
+    <div id="jlist"></div>`;
+  document.getElementById('jq').oninput=renderJournalList;
+  document.getElementById('jflt').onclick=e=>{const b=e.target.closest('button');if(b){window.journalFilter=b.dataset.id;renderJournalList()}};
+  const ll=document.getElementById('jlist');
+  if(!list.length){ll.innerHTML='<p class="hint">Chưa có giấc mơ nào.</p>';return}
+  ll.innerHTML=list.map(d=>{
+    const p=d.par?DB.dreams.find(x=>x.id===d.par):null;
+    const sens=d.sensitive&&!DB.set.safe?true:false;
+    return `<div class="dream ${sens?'sensitive':''}" data-dream="${d.id}">
+      <div class="row sp"><b>${hl(d.title||'(Không tên)')}</b><span class="hint">${fmtDate(d.t)}</span></div>
+      ${p?`<div class="hint">↳ tiếp nối “${esc(p.title)}”</div>`:''}
+      <p>${hl(d.txt||'(chỉ có mảnh ký ức)')}</p>
+      <div class="row">
+        <span class="chip">${esc(d.mood||'—')}</span>
+        <span class="chip">★ ${d.vivid||0}</span>
+        <span class="chip">🧠 ${d.recallScore||0}</span>
+        ${d.unf?'<span class="chip a">Dang dở</span>':''}
+        ${d.luc?'<span class="chip a">Mơ tỉnh</span>':''}
+        ${d.frag?'<span class="chip">Mảnh vỡ</span>':''}
+        ${d.nightmare?'<span class="chip" style="background:rgba(255,80,80,.2);color:#ff8888">Ác mộng</span>':''}
+        ${(d.tags||[]).map(t=>`<span class="chip">#${esc(t)}</span>`).join('')}
+      </div>
+      <div class="row" style="margin-top:10px">
+        ${sens?`<button class="btn sm" data-a="reveal" data-id="${d.id}">Hiện</button>`:''}
+        ${d.unf?`<button class="btn sm p" data-a="pickDreamBtn" data-id="${d.id}">Tiếp tục tối nay</button>`:''}
+        <button class="btn sm" data-a="editDream" data-id="${d.id}">Sửa</button>
+        <button class="btn sm" data-a="versions" data-id="${d.id}">Phiên bản (${(d.versions||[]).length})</button>
+        <button class="btn sm" data-a="dreamMore" data-id="${d.id}">…</button>
+        <button class="btn sm" data-a="delDream" data-id="${d.id}">Xóa</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function renderJMore(){
+  const el=document.getElementById('jMore');if(!el)return;
+  el.innerHTML=`<h2>Tuỳ chọn nhật ký</h2>
+    <div class="row">
+      <button class="btn" data-a="printJournal">${icon('print')} In nhật ký</button>
+      <button class="btn" data-a="exportMd">${icon('download')} Xuất Markdown</button>
+      <button class="btn" data-a="weeklyCard">${icon('image')} Thẻ tuần</button>
+      <button class="btn" data-a="qrExport">${icon('qr')} Xuất QR</button>
+    </div>
+    <p class="hint">In/xuất dùng dữ liệu cục bộ. Với nội dung nhạy cảm, bật chế độ an toàn trước.</p>`;
+}
+
+/* ================= RECALL ================= */
+const WZ=[
+ ["Cảm xúc còn đọng","Lúc vừa thức dậy bạn thấy thế nào? (vui, sợ, nhớ, bồn chồn…)"],
+ ["Hình ảnh/âm thanh cuối","Điều cuối cùng bạn nhớ được — dù chỉ một mảnh nhỏ?"],
+ ["Nơi chốn","Bạn ở đâu? Trong nhà, ngoài trời, nơi quen hay lạ?"],
+ ["Con người","Ai ở đó? Người quen, người lạ, hay chính bạn trông khác đi?"],
+ ["Màu sắc & đồ vật","Màu nào nổi bật? Có vật gì đáng chú ý?"],
+ ["Từ khóa bất kỳ","Gõ bất cứ từ nào vừa lóe lên trong đầu."]
+];
+let wz=null;
+function renderRecall(){
+  // wizard
+  const el=document.getElementById('wiz');
+  if(!wz){
+    el.innerHTML=`<h2>Mình quên rồi</h2><p class="hint">Trả lời 6 câu gợi nhớ. Bỏ qua câu nào không có gì cũng được.</p>
+      <button class="btn p w" data-a="wzStart">Bắt đầu gợi nhớ</button>`;
+  }else if(wz.i>=WZ.length){
+    const a=wz.a.filter(Boolean);
+    el.innerHTML=`<h2>Những mảnh ghép</h2>${a.length?`<div class="dream"><p style="-webkit-line-clamp:unset">${a.map(esc).join('<br>')}</p></div>`:`<p class="hint">Chưa có mảnh nào. Không sao — tối nay thử lại.</p>`}
+      <div class="row">${a.length?`<button class="btn p" data-a="wzSave">Lưu thành mảnh vỡ</button>`:''}<button class="btn" data-a="wzStart">Làm lại</button></div>`;
+  }else{
+    const [t,q]=WZ[wz.i];
+    el.innerHTML=`<div class="hint">Câu ${wz.i+1}/${WZ.length}</div><h2>${t}</h2><p>${q}</p>
+      <textarea id="wa" style="min-height:80px">${esc(wz.a[wz.i]||'')}</textarea>
+      <div class="row"><button class="btn p" data-a="wzNext">Tiếp</button><button class="btn" data-a="wzNext" data-id="skip">Bỏ qua</button></div>`;
+  }
+  // techniques
+  const TECH=[
+   ["Quy tắc 5 phút vàng","Mở mắt chậm, giữ nguyên tư thế, nhắm lại. Hồi tưởng cảm xúc trước, hình ảnh sau."],
+   ["Về lại tư thế cũ","Nằm lại đúng tư thế lúc thức — cơ thể thường giữ chìa khóa ký ức."],
+   ["Lần theo cảm xúc","Tập trung vào cảm xúc còn lại. Hỏi: “Cảm giác này đến từ đâu?”"],
+   ["Quét bảng chữ cái","Đi từ A đến Z, mỗi chữ nghĩ tới một người/nơi/vật. Khi chữ nào khơi gợi — đó là manh mối."],
+   ["Quét lại ngày hôm qua","Điểm lại sự kiện, người gặp, bài hát nghe."],
+   ["Ghi 1 từ cũng được","Ba từ khóa (người, nơi, cảm xúc). Đêm sau sẽ nhớ nhiều hơn."],
+   ["Thói quen nền tảng","Ngủ đủ và đều giờ, hạn chế rượu/caffeine tối, báo thức nhẹ."]
+  ];
+  document.getElementById('tech').innerHTML=`<h2>Kỹ thuật nhớ lại</h2>`+TECH.map(([a,b])=>`<details><summary>${a}</summary><div>${b}</div></details>`).join('');
+  // themes / dream signs
+  const STOP=new Set("không những được trong nhưng thấy mình đang cũng rồi khi này đó vào như với của người một các thì lại nên mới tôi bạn cho".split(' '));
+  const c={};
+  DB.dreams.forEach(d=>((d.txt||'')+' '+(d.scene||'')+' '+((d.tags||[]).join(' '))).toLowerCase().match(/\p{L}{4,}/gu)?.forEach(w=>{if(!STOP.has(w))c[w]=(c[w]||0)+1}));
+  const top=Object.entries(c).filter(x=>x[1]>1).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  document.getElementById('themes').innerHTML=`<h2>Dấu hiệu giấc mơ của bạn</h2>`+(top.length?`<p class="hint">Từ xuất hiện lặp lại — dùng làm “mỏ neo” để nhận ra mình đang mơ.</p><div class="row">${top.map(([w,n])=>`<span class="chip a">${esc(w)} · ${n}</span>`).join('')}</div>`:`<p class="hint">Ghi vài giấc mơ để phân tích.</p>`);
+  // dream signs dictionary
+  const signs=DB.dreamSigns||[];
+  document.getElementById('signs').innerHTML=`<h2>Từ điển dấu hiệu mơ</h2>
+    ${signs.length?signs.map(s=>`<div class="dream"><div class="row sp"><b>${esc(s.name)}</b><span class="chip">${s.count||1} lần</span></div>${s.desc?`<p>${esc(s.desc)}</p>`:''}</div>`).join(''):'<p class="hint">Chưa có. Thêm dấu hiệu hoặc lưu từ phân tích phía trên.</p>'}
+    <div class="row" style="margin-top:10px">
+      <input type="text" id="signName" placeholder="Tên dấu hiệu (VD: cửa vàng)" style="flex:1;min-width:180px">
+      <button class="btn sm p" data-a="addSign">Thêm</button>
+    </div>
+    <button class="btn sm" data-a="autoSigns" style="margin-top:8px">Gợi ý dấu hiệu từ tần suất</button>`;
+  // characters
+  const chars=DB.characters||[];
+  document.getElementById('chars').innerHTML=`<h2>Nhân vật trong mơ</h2>
+    ${chars.length?chars.map(c=>`<div class="dream"><div class="row sp"><b>${esc(c.name)}</b><span class="chip">${c.count||1} lần</span></div>${c.desc?`<p>${esc(c.desc)}</p>`:''}</div>`).join(''):'<p class="hint">Chưa có nhân vật.</p>'}
+    <div class="row" style="margin-top:10px">
+      <input type="text" id="charName" placeholder="Tên nhân vật" style="flex:1;min-width:120px">
+      <input type="text" id="charDesc" placeholder="Mô tả (tuỳ chọn)" style="flex:1;min-width:120px">
+      <button class="btn sm p" data-a="addChar">Thêm</button>
+    </div>`;
+  // places
+  const places=DB.places||[];
+  document.getElementById('places').innerHTML=`<h2>Địa điểm trong mơ</h2>
+    ${places.length?places.map(c=>`<div class="dream"><div class="row sp"><b>${esc(c.name)}</b><span class="chip">${c.count||1} lần</span></div></div>`).join(''):'<p class="hint">Chưa có địa điểm.</p>'}
+    <div class="row" style="margin-top:10px">
+      <input type="text" id="placeName" placeholder="Tên địa điểm" style="flex:1;min-width:150px">
+      <button class="btn sm p" data-a="addPlace">Thêm</button>
+    </div>`;
+}
+
+/* ================= SOUND ================= */
+let AC=null,snd=null,customUrls={};
+function nz(type){const L=AC.sampleRate*3,b=AC.createBuffer(2,L,AC.sampleRate);for(let c=0;c<2;c++){const d=b.getChannelData(c);let l=0,b0=0,b1=0,b2=0;for(let i=0;i<L;i++){const w=Math.random()*2-1;if(type==='brown'){l=(l+.02*w)/1.02;d[i]=l*3.5}else{b0=.99765*b0+w*.099;b1=.963*b1+w*.2965;b2=.57*b2+w*1.05;d[i]=(b0+b1+b2+w*.18)*.12}}}const s=AC.createBufferSource();s.buffer=b;s.loop=true;return s}
+function renderSound(){
+  const f=document.getElementById('sMain');
+  f.innerHTML=`<h2>Âm thanh dẫn mộng</h2><p class="hint">Đeo tai nghe. Nhịp binaural tạo trên máy, không cần tải gì.</p>
+  <label class="l">Nhịp sóng não</label>
+  <select id="sBeat"><option value="10">Alpha 10 Hz — thư giãn</option><option value="6" selected>Theta 6 Hz — hình dung</option><option value="4">Theta thấp 4 Hz</option><option value="40">Gamma 40 Hz — sau WBTB</option></select>
+  <label class="l">Âm lượng tổng</label><input type="range" id="sVol" min="0" max="1" step=".01" value=".35">
+  <label class="l">Hẹn giờ tắt</label>
+  <select id="sTimer"><option value="15">15 phút</option><option value="30" selected>30 phút</option><option value="60">60 phút</option><option value="0">Không</option></select>
+  <button class="btn p w" id="sGo" data-a="snd" style="margin-top:14px">▶ Bắt đầu</button>
+  <p class="hint" id="sSt"></p>`;
+  // Mixer
+  const m=DB.soundMixer;
+  const mEl=document.getElementById('sMixer');
+  mEl.innerHTML=`<h2>Mixer (đa lớp)</h2>
+    ${[['binaural','Binaural'],['rain','Mưa'],['brown','Tiếng ồn nâu'],['pink','Tiếng ồn hồng'],['custom','Tuỳ chỉnh']].map(([k,l])=>`
+      <label class="l">${l}: <b id="mx_${k}v">${Math.round((m[k]||0)*100)}%</b></label>
+      <input type="range" data-mx="${k}" min="0" max="1" step=".01" value="${m[k]||0}" class="mx-range">`).join('')}
+    <button class="btn p w" id="sMixStart" style="margin-top:10px">▶ Phát hỗn hợp</button>`;
+  mEl.querySelectorAll('[data-mx]').forEach(inp=>{
+    inp.oninput=e=>{const k=e.target.dataset.mx;m[k]=+e.target.value;document.getElementById('mx_'+k+'v').textContent=Math.round(m[k]*100)+'%';saveDB()};
+  });
+  // custom collection
+  const cEl=document.getElementById('sCustom');
+  cEl.innerHTML=`<h2>Bộ sưu tập âm thanh</h2>
+    <p class="hint">Tải lên file âm thanh (mp3, wav, ogg) để dùng làm nền.</p>
+    <label class="btn" style="width:100%">Thêm file<input type="file" id="sCustomFile" accept="audio/*" hidden></label>
+    <div id="sCustomList" style="margin-top:10px">${(DB.soundCustom||[]).map((c,i)=>`
+      <div class="row sp" style="padding:8px 0;border-bottom:1px solid var(--line)">
+        <span>${esc(c.name)}</span>
+        <button class="btn sm" data-a="sCustomPlay" data-id="${i}">Phát</button>
+      </div>`).join('')||'<p class="hint">Chưa có âm thanh cá nhân.</p>'}</div>`;
+  const inp=document.getElementById('sCustomFile');
+  if(inp)inp.onchange=e=>{const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{
+    DB.soundCustom=DB.soundCustom||[];DB.soundCustom.push({name:file.name,blob:btoa(r.result.split(',')[1]||''),mime:file.type});
+    saveDB();renderSound();toast('Đã thêm');
+  };r.readAsDataURL(file)};
+  // presets
+  const pEl=document.getElementById('sPresets');
+  pEl.innerHTML=`<h2>Preset</h2>
+    <div class="row">${(DB.soundPresets||[]).map((p,i)=>`
+      <button class="btn sm" data-a="presetLoad" data-id="${i}">${esc(p.name)}</button>`).join('')||'<span class="hint">Chưa có preset.</span>'}
+    </div>
+    <button class="btn p" data-a="presetSave" style="margin-top:10px">Lưu preset hiện tại</button>
+    <p class="hint">Preset gồm: nhịp, âm lượng, timer và mixer.</p>`;
+}
+function sndStart(){
+  AC=AC||new (window.AudioContext||window.webkitAudioContext)();AC.resume();
+  const vol=+document.getElementById('sVol').value;
+  const master=AC.createGain();master.gain.value=0;master.gain.linearRampToValueAtTime(vol,AC.currentTime+4);master.connect(AC.destination);
+  const nodes=[];
+  const beat=+document.getElementById('sBeat').value;
+  const mix=DB.soundMixer||{};
+  if((mix.binaural||0)>0){
+    const mg=AC.createChannelMerger(2),bg=AC.createGain();bg.gain.value=mix.binaural;
+    [0,1].forEach(c=>{const o=AC.createOscillator();o.frequency.value=200+(c?beat:0);o.connect(mg,0,c);o.start();nodes.push(o)});
+    mg.connect(bg);bg.connect(master);
+  }
+  ['rain','brown','pink'].forEach(k=>{
+    if((mix[k]||0)>0){const g=AC.createGain();g.gain.value=mix[k];const n=nz(k==='rain'?'pink':k);
+      if(k==='rain'){const bp=AC.createBiquadFilter();bp.type='highpass';bp.frequency.value=900;n.connect(bp);bp.connect(g)}else n.connect(g);
+      g.connect(master);n.start();nodes.push(n)}
+  });
+  const mins=+document.getElementById('sTimer').value;let to=null;if(mins)to=setTimeout(sndStop,mins*6e4);
+  snd={master,nodes,to};
+  const go=document.getElementById('sGo');if(go)go.textContent='■ Dừng';
+  const st=document.getElementById('sSt');if(st)st.textContent=beat===40?'Gamma 40 Hz: dùng sau WBTB.':'Đang phát. Âm lượng nhỏ, đeo tai nghe.';
+  saveDB();
+}
+function sndStop(){
+  if(!snd)return;const s=snd;snd=null;clearTimeout(s.to);
+  try{s.master.gain.cancelScheduledValues(AC.currentTime);s.master.gain.setValueAtTime(s.master.gain.value,AC.currentTime);s.master.gain.linearRampToValueAtTime(0,AC.currentTime+6)}catch{}
+  setTimeout(()=>s.nodes.forEach(n=>{try{n.stop()}catch{}}),6200);
+  const go=document.getElementById('sGo');if(go)go.textContent='▶ Bắt đầu';
+  const st=document.getElementById('sSt');if(st)st.textContent='Đã dừng.';
+}
+
+/* ================= ANALYTICS ================= */
+function renderAnalytics(){
+  const d=DB.dreams;
+  const n=d.length,l=d.filter(x=>x.luc).length,u=d.filter(x=>x.unf).length;
+  const avgVivid=d.length?(d.reduce((a,b)=>a+(b.vivid||0),0)/d.length).toFixed(1):0;
+  const avgRecall=d.length?(d.reduce((a,b)=>a+(b.recallScore||0),0)/d.length).toFixed(1):0;
+  document.getElementById('aDash').innerHTML=`<h2>Bảng điều khiển</h2>
+    <div class="stats">
+      ${[[n,'Giấc mơ'],[l,'Mơ tỉnh'],[u,'Dang dở'],[stk(),'Chuỗi'],[avgVivid,'Vivid TB'],[avgRecall,'Nhớ TB']].map(([v,k])=>`<div class="stat"><b>${v}</b><span class="hint">${k}</span></div>`).join('')}
+    </div>
+    <p class="hint" style="margin-top:10px">Nợ ngủ hiện tại: <b>${sleepDebt().toFixed(1)}h</b> · Latency TB: <b>${avgLatency().toFixed(0)} phút</b></p>`;
+  // moods
+  const mCount={};d.forEach(x=>mCount[x.mood]=(mCount[x.mood]||0)+1);
+  const maxM=Math.max(1,...Object.values(mCount));
+  document.getElementById('aMoods').innerHTML=`<h2>Cảm xúc</h2>`+Object.entries(mCount).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`
+    <div style="margin:6px 0"><div class="row sp"><span>${esc(k)}</span><b>${v}</b></div>
+    <div class="bar"><i style="width:${v/maxM*100}%;background:${MOOD_COLORS[k]||'var(--ac)'}"></i></div></div>`).join('')||'<p class="hint">Chưa có dữ liệu.</p>';
+  // tags
+  const tCount={};d.forEach(x=>(x.tags||[]).forEach(t=>tCount[t]=(tCount[t]||0)+1));
+  const maxT=Math.max(1,...Object.values(tCount));
+  document.getElementById('aTags').innerHTML=`<h2>Thẻ</h2>`+Object.entries(tCount).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([k,v])=>`
+    <div style="margin:6px 0"><div class="row sp"><span>#${esc(k)}</span><b>${v}</b></div>
+    <div class="bar"><i style="width:${v/maxT*100}%"></i></div></div>`).join('')||'<p class="hint">Chưa có dữ liệu.</p>';
+  // timeline
+  const last30=[...Array(30)].map((_,i)=>{const dd=new Date();dd.setDate(dd.getDate()-29+i);return{date:day(dd),items:d.filter(x=>x.date===day(dd))}});
+  document.getElementById('aTimeline').innerHTML=`<h2>30 ngày gần nhất</h2>
+    <div class="hist">${last30.map(({items})=>`<i style="height:${Math.min(100,items.length*25)}%;opacity:${items.length?.9:.25}" title="${items.length}"></i>`).join('')}</div>
+    <div class="row" style="justify-content:space-between;margin-top:6px"><span class="hint">30 ngày trước</span><span class="hint">Hôm nay</span></div>`;
+  // tag graph
+  renderTagGraph();
+  // sleep/recall correlation
+  const sl=DB.sleepLog.slice(-30);
+  const paired=sl.filter(s=>{const dm=d.find(x=>x.date===s.date);return dm}).map(s=>({h:s.hours,r:d.find(x=>x.date===s.date).recallScore||0}));
+  let corr=0;if(paired.length>2){const mx=paired.reduce((a,b)=>a+b.h,0)/paired.length,mr=paired.reduce((a,b)=>a+b.r,0)/paired.length;let num=0,dx=0,dy=0;paired.forEach(p=>{num+=(p.h-mx)*(p.r-mr);dx+=(p.h-mx)**2;dy+=(p.r-mr)**2});corr=num/Math.sqrt(dx*dy||1)}
+  document.getElementById('aSleep').innerHTML=`<h2>Tương quan giấc ngủ ↔ nhớ mơ</h2>
+    <p class="hint">Hệ số tương quan Pearson: <b>${corr.toFixed(2)}</b> (${paired.length} mẫu)</p>
+    <p>${corr>0.3?'Ngủ nhiều hơn → nhớ mơ tốt hơn.':corr<-0.3?'Ngủ ít hơn lại nhớ mơ tốt hơn (có thể do WBTB).':'Chưa thấy tương quan rõ.'}</p>
+    <label class="l">Ghi giấc ngủ hôm qua</label>
+    <div class="row"><input type="number" id="slHours" placeholder="Giờ ngủ" step="0.5" min="0" max="14" style="flex:1;min-width:100px">
+    <input type="number" id="slLat" placeholder="Phút vào giấc" min="0" max="180" style="flex:1;min-width:100px">
+    <button class="btn sm p" data-a="logSleep">Lưu</button></div>`;
+  // sleep debt
+  document.getElementById('aDebt').innerHTML=`<h2>Nợ ngủ</h2>
+    <p>Nợ hiện tại: <b>${sleepDebt().toFixed(1)}h</b> (dựa trên 8h/đêm, 14 ngày gần nhất)</p>
+    <p class="hint">Nợ cao làm giảm REM và khả năng nhớ mơ.</p>`;
+  // technique history
+  const tStat={};
+  d.forEach(x=>(x.techniques||[]).forEach(t=>{tStat[t]=tStat[t]||{n:0,luc:0,avgR:0,sumR:0};tStat[t].n++;if(x.luc)tStat[t].luc++;tStat[t].sumR+=x.recallScore||0;tStat[t].avgR=tStat[t].sumR/tStat[t].n}));
+  document.getElementById('aTech').innerHTML=`<h2>Kỹ thuật & hiệu quả</h2>`+Object.entries(tStat).map(([k,v])=>`
+    <div class="dream"><div class="row sp"><b>${esc(k)}</b><span class="chip">${v.n} lần</span></div>
+    <p>Tỉ lệ mơ tỉnh: ${(v.luc/v.n*100).toFixed(0)}% · Điểm nhớ TB: ${v.avgR.toFixed(1)}</p></div>`).join('')||'<p class="hint">Chưa có dữ liệu kỹ thuật.</p>';
+  // habits impact
+  const hStats={};
+  Object.entries(DB.habits).forEach(([date,h])=>{Object.entries(h).forEach(([k,v])=>{if(v){hStats[k]=hStats[k]||{with:0,n:0};hStats[k].with++}hStats[k]=hStats[k]||{with:0,n:0};hStats[k].n++})});
+  document.getElementById('aHabits').innerHTML=`<h2>Ảnh hưởng thói quen</h2>`+Object.entries(hStats).map(([k,v])=>{
+    const daysWithHabit=new Set(Object.entries(DB.habits).filter(([_,h])=>h[k]).map(([dd])=>dd));
+    const dreamsWithHabit=d.filter(x=>daysWithHabit.has(x.date));
+    const avg=dreamsWithHabit.length?(dreamsWithHabit.reduce((a,b)=>a+(b.recallScore||0),0)/dreamsWithHabit.length):0;
+    const allAvg=d.length?(d.reduce((a,b)=>a+(b.recallScore||0),0)/d.length):0;
+    return `<div class="dream"><div class="row sp"><b>${esc(k)}</b><span class="chip">${v.with} ngày</span></div><p>Điểm nhớ TB khi có thói quen: ${avg.toFixed(1)} · Toàn bộ: ${allAvg.toFixed(1)}</p></div>`;
+  }).join('')||'<p class="hint">Chưa có dữ liệu.</p>';
+  // monthly report
+  const thisMonth=new Date().getMonth(),thisYear=new Date().getFullYear();
+  const md=d.filter(x=>{const dt=new Date(x.t);return dt.getMonth()===thisMonth&&dt.getFullYear()===thisYear});
+  const ml=md.filter(x=>x.luc).length;
+  const mCounts={};md.forEach(x=>mCounts[x.mood]=(mCounts[x.mood]||0)+1);
+  const topMood=Object.entries(mCounts).sort((a,b)=>b[1]-a[1])[0]?.[0]||'—';
+  document.getElementById('aReport').innerHTML=`<h2>Báo cáo tháng ${thisMonth+1}/${thisYear}</h2>
+    <div class="stats">
+      <div class="stat"><b>${md.length}</b><span class="hint">Giấc mơ</span></div>
+      <div class="stat"><b>${ml}</b><span class="hint">Mơ tỉnh</span></div>
+      <div class="stat"><b>${esc(topMood)}</b><span class="hint">Cảm xúc chính</span></div>
+    </div>
+    <button class="btn sm" data-a="printMonthly" style="margin-top:10px">In báo cáo</button>`;
+}
+function renderTagGraph(){
+  const d=DB.dreams;const pairs={};const freq={};
+  d.forEach(x=>{const ts=x.tags||[];ts.forEach(t=>freq[t]=(freq[t]||0)+1);
+    for(let i=0;i<ts.length;i++)for(let j=i+1;j<ts.length;j++){const k=[ts[i],ts[j]].sort().join('|');pairs[k]=(pairs[k]||0)+1}});
+  const nodes=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,20);
+  const topPairs=Object.entries(pairs).sort((a,b)=>b[1]-a[1]).slice(0,20);
+  const W=600,H=400;const pos={};const cx=W/2,cy=H/2;
+  nodes.forEach(([k],i)=>{const a=i/nodes.length*Math.PI*2;const r=Math.min(W,H)*.35;pos[k]={x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r}});
+  const lines=topPairs.filter(([k])=>{const [a,b]=k.split('|');return pos[a]&&pos[b]}).map(([k,v])=>{const [a,b]=k.split('|');const p1=pos[a],p2=pos[b];return `<line x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}" stroke="var(--ac)" stroke-opacity="${Math.min(.8,v/5)}" stroke-width="${Math.min(4,v)}"/>`}).join('');
+  const circles=nodes.map(([k,v])=>{const p=pos[k];return `<circle cx="${p.x}" cy="${p.y}" r="${6+Math.min(14,v*2)}" fill="var(--ac)" opacity=".7"/><text x="${p.x}" y="${p.y-14}" fill="var(--fg)" font-size="10" text-anchor="middle">${esc(k)}</text>`}).join('');
+  document.getElementById('aGraph').innerHTML=`<h2>Mạng lưới thẻ</h2>${nodes.length?`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;max-height:400px">${lines}${circles}</svg>`:'<p class="hint">Cần ít nhất vài thẻ.</p>'}`;
+}
+function sleepDebt(){
+  const arr=DB.sleepLog.slice(-14);
+  if(!arr.length)return 0;
+  const need=8*arr.length;
+  const got=arr.reduce((a,b)=>a+(b.hours||0),0);
+  return Math.max(0,need-got);
+}
+function avgLatency(){
+  const arr=DB.sleepLog.filter(s=>s.latency>0).slice(-14);
+  if(!arr.length)return 0;
+  return arr.reduce((a,b)=>a+b.latency,0)/arr.length;
+}
+
+/* ================= ME ================= */
+function renderMe(){
+  // persona
+  const s=DB.self;
+  document.getElementById('mPersona').innerHTML=`<h2>Phiên bản hoàn hảo của bạn</h2>
+    <p class="hint">Mô tả thật rõ — não sẽ “nhập vai” dễ hơn khi chi tiết cụ thể.</p>
+    <div class="persona" id="pv">${s.name?`
+      <div class="big">${esc(s.name)}</div>
+      <p style="margin:6px 0">${esc(s.lk||'')}</p>
+      <p style="margin:6px 0"><b>Hơn bạn ở:</b> ${esc(s.tr||'…')}</p>
+      <p style="margin:6px 0"><b>Năng lực:</b> ${esc(s.sk||'…')}</p>
+      <p style="margin:6px 0"><b>Thế giới:</b> ${esc(s.wd||'…')}</p>`:'<p class="hint" style="color:#fff">Chưa có nhân vật.</p>'}</div>`;
+  document.getElementById('mPersonaForm').innerHTML=`
+    <label class="l" style="margin-top:0">Tên trong mơ</label><input type="text" id="pName" value="${esc(s.name)}">
+    <label class="l">Họ hơn mình ở điều gì?</label><textarea id="pTr" style="min-height:70px">${esc(s.tr)}</textarea>
+    <label class="l">Năng lực & kỹ năng</label><textarea id="pSk" style="min-height:70px">${esc(s.sk)}</textarea>
+    <label class="l">Ngoại hình</label><input type="text" id="pLk" value="${esc(s.lk)}">
+    <label class="l">Thế giới</label><input type="text" id="pWd" value="${esc(s.wd)}">
+    <button class="btn p w" data-a="saveSelf" style="margin-top:14px">Lưu nhân vật</button>`;
+  // stats + badges
+  const n=DB.dreams.length,l=DB.dreams.filter(x=>x.luc).length,u=DB.dreams.filter(x=>x.unf).length;
+  document.getElementById('mStats').innerHTML=`<h2>Hành trình</h2>
+    <div class="stats">
+      ${[[n,'Giấc mơ'],[l,'Mơ tỉnh'],[u,'Dang dở'],[stk(),'Chuỗi']].map(([v,k])=>`<div class="stat"><b>${v}</b><span class="hint">${k}</span></div>`).join('')}
+    </div>`;
+  // goals
+  const g=DB.goalsW;
+  document.getElementById('mGoals').innerHTML=`<h2>Mục tiêu</h2>
+    <label class="l">Giấc mơ / tuần</label><input type="number" id="goalDreams" value="${g.dreams}" min="0" max="50">
+    <label class="l">Mơ tỉnh / tuần</label><input type="number" id="goalLucid" value="${g.lucid}" min="0" max="20">
+    <label class="l">Kiểm tra thực tại / tuần</label><input type="number" id="goalRc" value="${g.rc}" min="0" max="200">
+    <label class="l">Chuỗi ngày mục tiêu</label><input type="number" id="goalStreak" value="${g.streak}" min="0" max="365">
+    <button class="btn p w" data-a="saveGoals" style="margin-top:10px">Lưu mục tiêu</button>
+    <div class="tg"><span>Bảo vệ chuỗi (1 lần/tháng)</span><input type="checkbox" id="streakProtect" ${DB.set.streakProtect?'checked':''}></div>
+    <p class="hint">Bảo vệ chuỗi: nếu có 1 ngày bỏ lỡ, chuỗi không bị reset (dùng 1 lần/tháng).</p>`;
+  // challenge
+  const ch=DB.challenges[DB.challenges.length-1];
+  document.getElementById('mChallenge').innerHTML=`<h2>Thử thách 30 ngày</h2>
+    ${ch?`<p>Đã hoàn thành: <b>${ch.done.length}/30</b> ngày</p>
+      <div class="bar"><i style="width:${ch.done.length/30*100}%"></i></div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn sm p" data-a="chCheck">Đánh dấu hôm nay</button>
+        <button class="btn sm" data-a="chReset">Huỷ</button>
+      </div>`:
+    `<p class="hint">Ghi mơ và kiểm tra thực tại mỗi ngày trong 30 ngày.</p>
+      <button class="btn p" data-a="chStart">Bắt đầu thử thách</button>`}`;
+  // badges
+  const B=[
+    [n>=1,'🌱 Hạt giống'],[stk()>=3,'🔥 3 ngày'],[stk()>=7,'🌙 7 ngày'],[stk()>=30,'👑 30 ngày'],
+    [l>=1,'👁 Mơ tỉnh'],[l>=10,'✨ 10 mơ tỉnh'],[n>=10,'📖 Nhà sử ký'],[n>=100,'🏛 Bậc thầy'],
+    [DB.dreams.some(x=>x.par),'🔗 Nối mộng'],[!!s.name,'✦ Nhân vật'],
+    [DB.dreamSigns.length>=3,'🔮 3 dấu hiệu'],[DB.challenges.length>0,'🎯 Thử thách']
+  ];
+  document.getElementById('mBadges').innerHTML=`<h2>Huy hiệu</h2><div class="row">${B.map(([o,t])=>`<span class="chip ${o?'a':''}" style="${o?'':'opacity:.4'}">${t}</span>`).join('')}</div>`;
+  // skin (Liquid Glass style)
+  document.getElementById('mSkin').innerHTML=`<h2>Kiểu kính (iOS 26)</h2>
+    <div style="display:flex;gap:8px"><button class="btn lgb ${!window.lgTint?'on':''}" data-t="0" style="flex:1">Clear</button><button class="btn lgb ${window.lgTint?'on':''}" data-t="1" style="flex:1">Tinted</button></div>
+    <p class="hint">Clear trong suốt, thấy nền. Tinted đặc hơn, tương phản cao hơn.</p>
+    <div class="tg"><span>Ánh sáng theo chuyển động</span><input type="checkbox" id="lgTrack" ${window.lgTrack!==false?'checked':''}></div>`;
+  // theme (mood themes)
+  const O=[['auto','Tự động',0,0,'auto'],['Bình yên','Bình yên','#8B88FF','#E056C8'],['Tình yêu','Tình yêu','#FF6B93','#FF9A8B'],['Vui','Vui','#FFB340','#7BD389'],['Phấn khích','Phấn khích','#FF7A45','#E5487F'],['Sợ hãi','Sợ hãi','#B5485D','#4B2A7A'],['Buồn','Buồn','#6F9BFF','#3A5A9C'],['Lạ lùng','Lạ lùng','#A78BFA','#2DD4BF'],['off','Tắt',0,0,'off']];
+  document.getElementById('mTheme').innerHTML=`<h2>Chủ đề cảm xúc</h2>
+    <p class="hint">Mỗi cảm xúc có chất kính riêng. “Tự động” bám theo giấc mơ gần nhất.</p>
+    <div class="thp" id="thpList">${O.map(([k,l,a,b,i])=>`<button data-th="${k}" aria-pressed="${k===(DB.set.th||'auto')}"><span class="o" style="background:${a?`linear-gradient(135deg,${a},${b})`:'rgba(255,255,255,.14)'}">${i&&i!=='auto'&&i!=='off'?`<svg class="ic" viewBox="0 0 24 24"><use href="#i-${i}"/></svg>`:''}</span>${l}</button>`).join('')}</div>`;
+  // color
+  const CK='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  document.getElementById('mColor').innerHTML=`<h2>Màu chủ đạo</h2>
+    <div class="sw" id="colorSw">
+      <button data-c="auto" style="background:conic-gradient(#FF6B93,#FFB340,#30D158,#6F9BFF,#A78BFA,#FF6B93)" aria-pressed="${!DB.set.acu}">${CK}</button>
+      ${['#8B88FF','#0A84FF','#30D158','#FF9F0A','#FF453A','#FF375F','#BF5AF2','#64D2FF'].map(h=>`<button data-c="${h}" style="background:${h}" aria-pressed="${DB.set.acu&&h.toLowerCase()===String(DB.set.ac).toLowerCase()}">${CK}</button>`).join('')}
+    </div>
+    <input type="color" id="cAc" value="${DB.set.ac}" style="display:none">
+    <button class="btn sm" data-a="customColor" style="margin-top:8px">Màu tuỳ chỉnh</button>`;
+  // display
+  document.getElementById('mDisplay').innerHTML=`<h2>Hiển thị</h2>
+    <div class="tg"><span>Liquid Glass</span><input type="checkbox" data-s="liquid" ${DB.set.liquid?'checked':''}></div>
+    <div class="tg"><span>Kính mờ</span><input type="checkbox" data-s="blur" ${DB.set.blur?'checked':''}></div>
+    <div class="tg"><span>Glow & sao</span><input type="checkbox" data-s="glow" ${DB.set.glow?'checked':''}></div>
+    <div class="tg"><span>Chuyển động</span><input type="checkbox" data-s="anim" ${DB.set.anim?'checked':''}></div>
+    <div class="tg"><span>Chế độ đêm (giảm sáng xanh)</span><input type="checkbox" data-s="night" ${DB.set.night?'checked':''}></div>
+    <div class="tg"><span>Thu gọn</span><input type="checkbox" data-s="compact" ${DB.set.compact?'checked':''}></div>
+    <div class="tg"><span>Một tay</span><input type="checkbox" data-s="oneHand" ${DB.set.oneHand?'checked':''}></div>
+    <div class="tg"><span>Chế độ tập trung</span><input type="checkbox" data-s="focus" ${DB.set.focus?'checked':''}></div>`;
+  // access
+  document.getElementById('mAccess').innerHTML=`<h2>Khả năng truy cập</h2>
+    <div class="tg"><span>Tương phản cao</span><input type="checkbox" data-s="highContrast" ${DB.set.highContrast?'checked':''}></div>
+    <div class="tg"><span>Giảm chuyển động</span><input type="checkbox" data-s="reducedMotion" ${DB.set.reducedMotion?'checked':''}></div>
+    <div class="tg"><span>Chế độ an toàn (ẩn nội dung nhạy cảm)</span><input type="checkbox" data-s="safe" ${DB.set.safe?'checked':''}></div>
+    <div class="tg"><span>Chế độ nghiên cứu (xuất ẩn danh)</span><input type="checkbox" data-s="researchMode" ${DB.researchMode?'checked':''}></div>
+    <div class="tg"><span>Nhắc uống nước</span><input type="checkbox" data-s="waterRemind" ${DB.set.waterRemind?'checked':''}></div>
+    <div class="tg"><span>Nhắc nghỉ mắt</span><input type="checkbox" data-s="eyeRemind" ${DB.set.eyeRemind?'checked':''}></div>
+    <button class="btn sm" data-a="ttsRead" style="margin-top:8px">${icon('sound')} Đọc tab hiện tại</button>`;
+  // nav custom
+  document.getElementById('mNav').innerHTML=`<h2>Sắp xếp thanh điều hướng</h2>
+    <p class="hint">Đổi thứ tự tab (kéo thả hoặc bấm mũi tên).</p>
+    <div id="navOrderList">${(DB.set.navOrder||ALL_TABS.map(t=>t.id)).map((id,i)=>`
+      <div class="row sp" style="padding:8px 0;border-bottom:1px solid var(--line)">
+        <span>${ALL_TAB_TITLES[id]}</span>
+        <div class="row">
+          <button class="btn sm" data-a="navUp" data-id="${id}">↑</button>
+          <button class="btn sm" data-a="navDown" data-id="${id}">↓</button>
+        </div>
+      </div>`).join('')}</div>`;
+  // shortcuts
+  document.getElementById('mShortcuts').innerHTML=`<h2>Phím tắt</h2>
+    <p class="hint">N: Mở form ghi · S: Lưu · R: Kiểm tra thực tại · Esc: Đóng · ?: Trợ giúp</p>
+    <div class="tg"><span>Bật phím tắt</span><input type="checkbox" id="scEn" ${DB.set.shortcuts!==false?'checked':''}></div>`;
+  // prompts
+  document.getElementById('mPrompts').innerHTML=`<h2>Câu hỏi tự đặt</h2>
+    <div id="promptList">${(DB.customPrompts||[]).map((p,i)=>`<div class="row sp" style="padding:6px 0"><span>${esc(p)}</span><button class="btn sm" data-a="delPrompt" data-id="${i}">Xóa</button></div>`).join('')||'<p class="hint">Chưa có câu hỏi.</p>'}</div>
+    <div class="row" style="margin-top:8px"><input type="text" id="newPrompt" placeholder="Câu hỏi mới…" style="flex:1;min-width:150px"><button class="btn sm p" data-a="addPrompt">Thêm</button></div>`;
+  // security
+  document.getElementById('mSecurity').innerHTML=`<h2>Bảo mật</h2>
+    <div class="tg"><span>Khóa bằng sinh trắc học</span><input type="checkbox" data-s="biometric" ${DB.set.biometric?'checked':''}></div>
+    <button class="btn sm" data-a="setPin" style="margin-top:8px">${DB.set.pinHash?'Đổi PIN':'Đặt PIN'}</button>
+    ${DB.set.pinHash?'<button class="btn sm danger" data-a="clearPin" style="margin-left:8px">Xóa PIN</button>':''}
+    <p class="hint">PIN dùng để mở nhanh phiên ghi mơ. Hash lưu cục bộ, không gửi đi đâu.</p>
+    <button class="btn sm" data-a="lockSession" style="margin-top:8px">${icon('lock')} Khóa ngay</button>`;
+  // profile
+  document.getElementById('mProfile').innerHTML=`<h2>Hồ sơ</h2>
+    <p class="hint">Nhiều người dùng chung thiết bị, dữ liệu riêng biệt.</p>
+    <div class="row">${DB.profiles.map(p=>`<button class="btn sm ${p===DB.profile?'on':''}" data-a="switchProfile" data-id="${p}">${esc(p)}</button>`).join('')}</div>
+    <div class="row" style="margin-top:8px">
+      <input type="text" id="newProfile" placeholder="Tên hồ sơ mới" style="flex:1;min-width:150px">
+      <button class="btn sm p" data-a="addProfile">Tạo</button>
+    </div>`;
+  // data
+  document.getElementById('mData').innerHTML=`<h2>Dữ liệu</h2>
+    <div class="row">
+      <button class="btn" data-a="expPlain">${icon('download')} Xuất JSON</button>
+      <button class="btn" data-a="expEnc">${icon('lock')} Xuất mã hóa</button>
+      <label class="btn">${icon('upload')} Nhập<input type="file" id="impFile" accept=".json,.enc" hidden></label>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button class="btn" data-a="autoBackupFS">${icon('backup')} Sao lưu file</button>
+      <button class="btn" data-a="exportMd">${icon('code')} Markdown</button>
+      <button class="btn" data-a="qrExport">${icon('qr')} QR</button>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button class="btn" data-a="validateDB">${icon('check')} Kiểm tra</button>
+      <button class="btn" data-a="backupList">${icon('clock')} Bản sao lưu</button>
+      <button class="btn" data-a="cleanupDrafts">${icon('trash')} Dọn nháp cũ</button>
+    </div>
+    <div class="tg"><span>Tự động sao lưu hàng tuần</span><input type="checkbox" data-s="autoBackup" ${DB.set.autoBackup?'checked':''}></div>
+    <button class="btn danger w" data-a="resetAll" style="margin-top:14px">Xóa toàn bộ dữ liệu</button>
+    <p class="hint">Mọi dữ liệu cục bộ. Xuất mã hóa dùng AES-GCM để sao lưu an toàn.</p>`;
+  // about
+  document.getElementById('mAbout').innerHTML=`<h2>Về Oneiro</h2>
+    <p class="hint">Phiên bản 4 · Liquid Glass iOS 26. Các kỹ thuật giúp nhiều người nhớ mơ và mơ tỉnh tốt hơn nhưng không đảm bảo mơ lại đúng giấc mơ cũ. Nếu ác mộng hay mất ngủ kéo dài, hãy gặp chuyên gia.</p>
+    <div class="row" style="margin-top:8px">
+      <label class="l">Ngôn ngữ</label>
+      <select id="langSel" style="flex:1">
+        <option value="vi" ${DB.set.lang==='vi'?'selected':''}>Tiếng Việt</option>
+        <option value="en" ${DB.set.lang==='en'?'selected':''}>English</option>
+      </select>
+    </div>
+    <p class="hint" style="margin-top:10px">Tổng: ${DB.dreams.length} giấc mơ · ${DB.dreamSigns.length} dấu hiệu · ${DB.goals.length} mục tiêu.</p>`;
+  // wire theme thumbnails
+  document.querySelectorAll('[data-th]').forEach(b=>{
+    b.onclick=e=>{const k=e.currentTarget.dataset.th;DB.set.th=k;DB.set.acu=0;saveDB();applySet();renderMe()};
+  });
+  // color swatches
+  document.getElementById('colorSw').onclick=e=>{
+    const b=e.target.closest('button');if(!b)return;
+    if(b.dataset.c==='auto')DB.set.acu=0;else{DB.set.ac=b.dataset.c;DB.set.acu=1}
+    saveDB();applySet();renderMe();
+  };
+}
+
+/* ================= HELPERS FOR ACTIONS ================= */
+function newId(){return Date.now()+Math.floor(Math.random()*1000)}
+function currentMood(){return pendingMood.v||'Bình yên'}
+function gatherForm(){
+  const get=id=>{const el=document.getElementById(id);return el?el.value:''};
+  const chk=id=>{const el=document.getElementById(id);return el?el.checked:false};
+  const tags=get('fTags').split(',').map(s=>s.trim()).filter(Boolean);
+  const places=get('fPlaces').split(',').map(s=>s.trim()).filter(Boolean);
+  const people=get('fPeople').split(',').map(s=>s.trim()).filter(Boolean);
+  const bodyFeel=[...(document.querySelectorAll('#fBody .btn.on')||[])].map(b=>b.dataset.id);
+  const techniques=[...(document.querySelectorAll('#fTech .btn.on')||[])].map(b=>b.dataset.id);
+  const goals=[...(document.querySelectorAll('#fGoals .btn.on')||[])].map(b=>+b.dataset.id);
+  const tones=[...(document.querySelectorAll('#fTone .btn.on')||[])].map(b=>b.dataset.id);
+  const title=get('fTitle'),txt=get('fTxt'),scene=get('fScene');
+  const autoTitle=title||(txt.slice(0,28)+(txt.length>28?'…':''))||scene||'(Không tên)';
+  return {
+    title:autoTitle,txt,scene,mood:currentMood(),tone:tones[0]||null,
+    vivid:+get('fVivid')||6, recallScore:+get('fRecallScore')||5,
+    unf:chk('fUnf'),luc:chk('fLuc'),frag:chk('fFrag'),nightmare:chk('fNight'),sensitive:chk('fSens'),
+    tags,places,people,bodyFeel,techniques,goals,
+    par:chk('fPar')&&tgt()?DB.target:null,
+    date:day()
+  };
+}
+
+/* ================= ACTIONS ================= */
+const A={
+  go:id=>go(id),
+  copyMantra:()=>{navigator.clipboard?.writeText(mantra()).then(()=>toast('Đã sao chép'),()=>toast('Không sao chép được'))},
+  setWBTB:()=>{if('Notification'in window)Notification.requestPermission().then(p=>{if(p==='granted')toast('Đã bật WBTB thông báo')}).catch(()=>{});toast('Sẽ nhắc WBTB khi đặt giờ ngủ')},
+  testNotif:()=>{if('Notification'in window){Notification.requestPermission().then(p=>{if(p==='granted')new Notification('Oneiro',{body:'Thông báo hoạt động!'});else toast('Chưa được cấp quyền')})}else toast('Không hỗ trợ')},
+  rcNow:()=>{const RC=["Nhìn bàn tay: đếm số ngón.","Nhìn chữ/đồng hồ, quay đi rồi nhìn lại.","Bịt mũi thử thở.","Hỏi: mình đến đây bằng cách nào?","Bật công tắc đèn."];const r=RC[Math.floor(Math.random()*RC.length)];const el=document.getElementById('rcBox');if(el)el.textContent=r;toast('Kiểm tra: '+r);navigator.vibrate?.(80)},
+  rcSel:id=>{const RC=["Nhìn bàn tay: đếm số ngón.","Nhìn chữ/đồng hồ, quay đi rồi nhìn lại.","Bịt mũi thử thở.","Hỏi: mình đến đây bằng cách nào?","Bật công tắc đèn."];const el=document.getElementById('rcBox');if(el)el.textContent=RC[+id]||'—'},
+  b478:()=>{const el=document.getElementById('breath478');if(!el)return;el.classList.toggle('breath478');el.classList.toggle('go',el.classList.contains('breath478'))},
+  saveInc:()=>{DB.dreams.incubate=document.getElementById('incText').value;saveDB();toast('Đã lưu ý định')},
+  save:()=>{
+    const d=gatherForm();
+    if(!d.txt&&!d.scene&&!d.title)return toast('Hãy viết ít nhất vài từ');
+    if(editingId){
+      const o=DB.dreams.find(x=>x.id===editingId);
+      if(o){const v={...o,versions:[...(o.versions||[]),{at:Date.now(),snap:JSON.parse(JSON.stringify(o))}]};
+        Object.assign(v,d);v.t=o.t;v.date=o.date;
+        DB.dreams[DB.dreams.indexOf(o)]=v;
+        pushUndo('edit',o);}
+    }else{
+      d.id=newId();d.t=Date.now();d.versions=[];
+      pushUndo('add',d);
+      DB.dreams.push(d);
+    }
+    saveDB();editingId=null;DB.draft=null;
+    renderJournal();toast('Đã lưu giấc mơ ✦');
+  },
+  cancel:()=>{editingId=null;renderJournal()},
+  mood:id=>{pendingMood.v=id;renderMoodSeg();if((DB.set.th||'auto')==='auto')setTh(id)},
+  tone:id=>{const b=document.querySelector(`#fTone [data-id="${id}"]`);if(b)b.classList.toggle('on')},
+  body:id=>{const b=document.querySelector(`#fBody [data-id="${id}"]`);if(b)b.classList.toggle('on')},
+  tech:id=>{const b=document.querySelector(`#fTech [data-id="${id}"]`);if(b)b.classList.toggle('on')},
+  pickGoal:id=>{const b=document.querySelector(`#fGoals [data-id="${id}"]`);if(b)b.classList.toggle('on')},
+  addTag:t=>{const el=document.getElementById('fTags');if(!el)return;const v=el.value.split(',').map(s=>s.trim()).filter(Boolean);if(!v.includes(t))v.push(t);el.value=v.join(', ');renderTagSuggestions(el.value)},
+  flt:id=>{window.journalFilter=id;renderJournalList()},
+  editDream:id=>{editingId=+id;renderJournal();document.getElementById('ttl').textContent='Sửa giấc mơ';window.scrollTo({top:0,behavior:'smooth'})},
+  delDream:id=>{if(!confirm('Xóa giấc mơ?'))return;const o=DB.dreams.find(x=>x.id===+id);if(!o)return;pushUndo('del',o);DB.dreams=DB.dreams.filter(x=>x.id!==+id);if(DB.target===+id)DB.target=null;saveDB();renderJournal()},
+  reveal:id=>{const el=document.querySelector(`[data-dream="${id}"]`);if(el)el.classList.add('reveal')},
+  pickDreamBtn:id=>{DB.target=+id;saveDB();toast('Đã chọn. Sang tab Tối nay');go('tonight')},
+  versions:id=>{const d=DB.dreams.find(x=>x.id===+id);if(!d)return;const v=d.versions||[];if(!v.length)return toast('Chưa có phiên bản');const idx=confirm(`Có ${v.length} phiên bản. Nhấn OK để khôi phục bản gần nhất`)?v[v.length-1]:null;if(idx){pushUndo('restore',d);Object.assign(d,idx.snap);d.versions=v;saveDB();renderJournal();toast('Đã khôi phục')}},
+  dreamMore:id=>{const d=DB.dreams.find(x=>x.id===+id);if(!d)return;const opt=prompt('1: Mã hóa riêng · 2: Chia sẻ ẩn danh · 3: Đọc TTS · 4: Xuất MD','1');if(opt==='1'){encryptDream(d)}else if(opt==='2'){shareAnon(d)}else if(opt==='3'){ttsDream(d)}else if(opt==='4'){exportDreamMd(d)}},
+  printJournal:()=>{window.print()},
+  exportMd:()=>{const md=DB.dreams.map(d=>`---\ndate: ${d.date}\ntitle: ${d.title||''}\nmood: ${d.mood||''}\ntags: [${(d.tags||[]).join(', ')}]\n---\n\n${d.txt||''}\n`).join('\n');downloadFile('oneiro-dreams.md',md,'text/markdown')},
+  weeklyCard:()=>{weeklyCard()},
+  qrExport:()=>{const s=JSON.stringify(DB);navigator.clipboard?.writeText(s).then(()=>toast('Đã sao chép JSON (dán vào trình quét QR bất kỳ)'),()=>toast('Không sao chép được'))},
+  mic:()=>{const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R)return toast('Trình duyệt chưa hỗ trợ');const r=new R();r.lang='vi-VN';r.continuous=false;r.onresult=e=>{const el=document.getElementById('fTxt');el.value+=(el.value?' ':'')+e.results[0][0].transcript;toast('Đã chèn')};r.onerror=()=>toast('Lỗi giọng nói');r.start();toast('Đang nghe…')},
+  recAudio:()=>{const el=document.getElementById('fTxt');if(!navigator.mediaDevices?.getUserMedia)return toast('Không hỗ trợ ghi âm');navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
+    const mr=new MediaRecorder(stream);const chunks=[];mr.ondataavailable=e=>chunks.push(e.data);mr.onstop=()=>{
+      const blob=new Blob(chunks,{type:'audio/webm'});const r=new FileReader();r.onload=()=>{const b64=r.result.split(',')[1];
+        const d=DB.dreams.find(x=>x.id===editingId)||DB.dreams[DB.dreams.length-1];if(d){d.audio=b64;saveDB();toast('Đã đính kèm âm thanh')}else toast('Lưu giấc mơ trước')};r.readAsDataURL(blob);stream.getTracks().forEach(t=>t.stop());
+    };mr.start();toast('Đang ghi… bấm lại để dừng');setTimeout(()=>{try{mr.stop()}catch{}},5000);
+  }).catch(()=>toast('Không truy cập micro'))},
+  drawSketch:()=>{openSketchModal()},
+  wzStart:()=>{wz={i:0,a:[]};renderRecall()},
+  wzNext:id=>{if(!wz)return;wz.a[wz.i]=id==='skip'?'':(document.getElementById('wa')?.value||'').trim();wz.i++;renderRecall()},
+  wzSave:()=>{if(!wz)return;const a=wz.a.filter(Boolean);DB.dreams.push({id:newId(),t:Date.now(),date:day(),title:'Mảnh ghép '+new Date().toLocaleDateString('vi-VN'),txt:a.join(' · '),scene:wz.a[1]||'',mood:'Lạ lùng',vivid:3,recallScore:2,unf:true,luc:false,frag:true,tags:[],places:[],people:[],bodyFeel:[],techniques:[],goals:[],versions:[],par:null});saveDB();wz=null;toast('Đã lưu mảnh vỡ');go('journal')},
+  addSign:()=>{const n=document.getElementById('signName')?.value.trim();if(!n)return;DB.dreamSigns.push({id:newId(),name:n,desc:'',count:1,lastAt:Date.now()});saveDB();renderRecall()},
+  autoSigns:()=>{const STOP=new Set(['không','những','được','trong','nhưng','thấy','mình','đang','cũng','rồi','khi','này','đó','vào','như','với','của','người','một','các','thì','lại','nên','mới','tôi','bạn','cho']);const c={};DB.dreams.forEach(d=>((d.txt||'')+' '+(d.scene||'')).toLowerCase().match(/\p{L}{4,}/gu)?.forEach(w=>{if(!STOP.has(w))c[w]=(c[w]||0)+1}));const top=Object.entries(c).filter(x=>x[1]>1).sort((a,b)=>b[1]-a[1]).slice(0,10);if(!top.length)return toast('Chưa đủ dữ liệu');top.forEach(([w,n])=>{if(!DB.dreamSigns.find(s=>s.name===w))DB.dreamSigns.push({id:newId(),name:w,desc:'Tự động',count:n,lastAt:Date.now()})});saveDB();renderRecall();toast('Đã thêm dấu hiệu')},
+  addChar:()=>{const n=document.getElementById('charName')?.value.trim();if(!n)return;DB.characters.push({id:newId(),name:n,desc:document.getElementById('charDesc')?.value||'',count:1});saveDB();renderRecall()},
+  addPlace:()=>{const n=document.getElementById('placeName')?.value.trim();if(!n)return;DB.places.push({id:newId(),name:n,count:1});saveDB();renderRecall()},
+  snd:()=>snd?sndStop():sndStart(),
+  sCustomPlay:i=>{const c=DB.soundCustom[+i];if(!c)return;const url=URL.createObjectURL(new Blob([Uint8Array.from(atob(c.blob),x=>x.charCodeAt(0))],{type:c.mime}));const a=new Audio(url);a.play();toast('Đang phát '+c.name)},
+  presetLoad:i=>{const p=DB.soundPresets[+i];if(!p)return;Object.assign(DB.soundMixer,p.mixer);saveDB();renderSound();toast('Đã áp preset')},
+  presetSave:()=>{const name=prompt('Tên preset:','Preset '+new Date().toLocaleTimeString('vi-VN'));if(!name)return;DB.soundPresets.push({name,mixer:JSON.parse(JSON.stringify(DB.soundMixer))});saveDB();renderSound()},
+  logSleep:()=>{const h=+document.getElementById('slHours').value,l=+document.getElementById('slLat').value;if(!h)return toast('Nhập số giờ');DB.sleepLog.push({date:day(),hours:h,latency:l||0});saveDB();renderAnalytics()},
+  printMonthly:()=>{window.print()},
+  saveSelf:()=>{DB.self={name:document.getElementById('pName').value.trim(),tr:document.getElementById('pTr').value.trim(),sk:document.getElementById('pSk').value.trim(),lk:document.getElementById('pLk').value.trim(),wd:document.getElementById('pWd').value.trim()};saveDB();renderMe();toast('Đã lưu nhân vật')},
+  saveGoals:()=>{DB.goalsW={dreams:+document.getElementById('goalDreams').value||7,lucid:+document.getElementById('goalLucid').value||2,rc:+document.getElementById('goalRc').value||14,streak:+document.getElementById('goalStreak').value||7};DB.set.streakProtect=document.getElementById('streakProtect').checked?1:0;saveDB();toast('Đã lưu mục tiêu')},
+  chStart:()=>{DB.challenges.push({start:day(),days:30,done:[]});saveDB();renderMe()},
+  chCheck:()=>{const c=DB.challenges[DB.challenges.length-1];if(!c)return;const d=day();if(!c.done.includes(d)){c.done.push(d);saveDB();renderMe();toast('Đã đánh dấu hôm nay')}},
+  chReset:()=>{if(!confirm('Huỷ thử thách?'))return;DB.challenges=DB.challenges.slice(0,-1);saveDB();renderMe()},
+  customColor:()=>{const c=document.getElementById('cAc');c.click()},
+  ttsRead:()=>{const text=[...document.querySelectorAll('#views .card')].map(x=>x.textContent).join('\n').slice(0,2000);if(!('speechSynthesis'in window))return toast('Không hỗ trợ TTS');const u=new SpeechSynthesisUtterance(text);u.lang='vi-VN';speechSynthesis.speak(u);toast('Đang đọc')},
+  navUp:id=>{const arr=DB.set.navOrder.slice();const i=arr.indexOf(id);if(i>0){[arr[i-1],arr[i]]=[arr[i],arr[i-1]];DB.set.navOrder=arr;saveDB();buildNav();renderMe()}},
+  navDown:id=>{const arr=DB.set.navOrder.slice();const i=arr.indexOf(id);if(i<arr.length-1){[arr[i],arr[i+1]]=[arr[i+1],arr[i]];DB.set.navOrder=arr;saveDB();buildNav();renderMe()}},
+  addPrompt:()=>{const v=document.getElementById('newPrompt').value.trim();if(!v)return;DB.customPrompts.push(v);saveDB();renderMe()},
+  delPrompt:i=>{DB.customPrompts.splice(+i,1);saveDB();renderMe()},
+  setPin:()=>{const pin=prompt('PIN mới (4-6 số):');if(!pin||!/^\d{4,6}$/.test(pin))return toast('PIN không hợp lệ');crypto.subtle.digest('SHA-256',new TextEncoder().encode('oneiro.pin:'+pin)).then(b=>{DB.set.pinHash=btoa(String.fromCharCode(...new Uint8Array(b)));saveDB();renderMe();toast('Đã đặt PIN')})},
+  clearPin:()=>{DB.set.pinHash=null;saveDB();renderMe()},
+  lockSession:()=>{sessionStorage.setItem('locked','1');location.reload()},
+  switchProfile:id=>{DB.profile=id;saveDB();toast('Đã chuyển sang '+id)},
+  addProfile:()=>{const v=document.getElementById('newProfile').value.trim();if(!v||DB.profiles.includes(v))return;DB.profiles.push(v);saveDB();renderMe()},
+  expPlain:()=>{downloadFile('oneiro-backup.json',JSON.stringify(DB,null,1),'application/json')},
+  expEnc:()=>{const pw=prompt('Mật khẩu mã hóa:');if(!pw)return;encryptExport(pw)},
+  autoBackupFS:()=>{if(!window.showSaveFilePicker)return downloadFile('oneiro-auto.json',JSON.stringify(DB,null,1),'application/json');window.showSaveFilePicker({suggestedName:'oneiro-auto.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]}).then(async h=>{const w=await h.createWritable();await w.write(JSON.stringify(DB,null,1));await w.close();DB.set.lastBackupAt=Date.now();saveDB();toast('Đã sao lưu')}).catch(()=>{})},
+  validateDB:()=>{let issues=[];DB.dreams.forEach(d=>{if(!d.id)issues.push('Thiếu id');if(!d.date)issues.push('Thiếu ngày');if(d.par&&!DB.dreams.find(x=>x.id===d.par))issues.push('Parent không tồn tại')});toast(issues.length?`${issues.length} vấn đề`:'Dữ liệu OK')},
+  backupList:()=>{const b=DB.backups||[];if(!b.length)return toast('Chưa có bản sao lưu');const i=prompt('Bản sao lưu (0 mới nhất):\n'+b.map((x,i)=>`${i}: v${x.v} · ${new Date(x.at).toLocaleString('vi-VN')}`).join('\n'),'0');if(i!==null&&b[+i]){if(confirm('Khôi phục?')){DB=JSON.parse(b[+i].snap);saveDB();location.reload()}}},
+  cleanupDrafts:()=>{if(DB.draft&&Date.now()-DB.draft.at>7*864e5){DB.draft=null;saveDB();toast('Đã xóa nháp cũ')}else toast('Nháp còn mới, giữ lại')},
+  resetAll:()=>{if(!confirm('Xóa toàn bộ dữ liệu?'))return;localStorage.removeItem(LS);location.reload()},
+  undo:()=>{const u=undoStack.pop();if(!u)return toast('Không có gì để hoàn tác');DB=JSON.parse(u.snap);saveDB();renderJournal();toast('Đã hoàn tác')}
+};
+function pushUndo(kind,obj){
+  undoStack.push({kind,snap:JSON.stringify(DB),at:Date.now()});
+  if(undoStack.length>20)undoStack.shift();
+  DB.undoStack=undoStack.map(u=>({kind:u.kind,snap:u.snap,at:u.at})).slice(-20);
+  saveDB();
+}
+
+/* ================= FILE HELPERS ================= */
+function downloadFile(name,content,type='text/plain'){
+  const b=new Blob([content],{type});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),3000);
+}
+function weeklyCard(){
+  const last7=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);const dd=day(d);return DB.dreams.filter(x=>x.date===dd)});
+  const total=last7.reduce((a,b)=>a+b.length,0);
+  const lucid=last7.reduce((a,b)=>a+b.filter(x=>x.luc).length,0);
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><defs><linearGradient id="g"><stop offset="0" stop-color="#8B88FF"/><stop offset="1" stop-color="#E056C8"/></linearGradient></defs>
+    <rect width="600" height="400" fill="#05050f"/>
+    <text x="40" y="80" fill="#fff" font-size="36" font-family="sans-serif" font-weight="700">Oneiro · Tuần này</text>
+    <text x="40" y="170" fill="#fff" font-size="60" font-family="sans-serif" font-weight="700">${total} giấc mơ</text>
+    <text x="40" y="230" fill="#8B88FF" font-size="28" font-family="sans-serif">${lucid} mơ tỉnh · ${stk()} ngày liên tiếp</text>
+    ${last7.map((d,i)=>`<rect x="${40+i*72}" y="${360-d.length*20}" width="44" height="${d.length*20+2}" fill="url(#g)" rx="6"/>`).join('')}
+    <text x="40" y="385" fill="#888" font-size="14" font-family="sans-serif">oneiro · ai</text>
+  </svg>`;
+  downloadFile('oneiro-week.svg',svg,'image/svg+xml');
+}
+function ttsDream(d){if(!('speechSynthesis'in window))return toast('Không hỗ trợ');const u=new SpeechSynthesisUtterance(d.txt||d.title);u.lang='vi-VN';speechSynthesis.speak(u)}
+function exportDreamMd(d){downloadFile(`dream-${d.id}.md`,`---\ndate: ${d.date}\ntitle: ${d.title||''}\nmood: ${d.mood||''}\ntags: [${(d.tags||[]).join(', ')}]\n---\n\n${d.txt||''}\n`,'text/markdown')}
+function shareAnon(d){const a={title:'(ẩn danh)',txt:(d.txt||'').replace(/\p{Lu}\p{Ll}+/gu,'[tên]'),scene:d.scene,mood:d.mood,vivid:d.vivid,tags:d.tags};navigator.clipboard?.writeText(JSON.stringify(a,null,1)).then(()=>toast('Đã sao chép bản ẩn danh'))}
+function encryptDream(d){const pw=prompt('Mật khẩu cho giấc mơ này:');if(!pw)return;crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']).then(base=>{
+  const salt=crypto.getRandomValues(new Uint8Array(16));
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt']).then(k=>{
+    const iv=crypto.getRandomValues(new Uint8Array(12));
+    return crypto.subtle.encrypt({name:'AES-GCM',iv},k,new TextEncoder().encode(d.txt||'')).then(ct=>{
+      d.encrypted=btoa(String.fromCharCode(...new Uint8Array(ct)));d.iv=btoa(String.fromCharCode(...iv));d.salt=btoa(String.fromCharCode(...salt));d.txt='[đã mã hóa]';saveDB();toast('Đã mã hóa')
+    })
+  })
+}).catch(()=>toast('Lỗi mã hóa'))}
+function encryptExport(pw){crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']).then(base=>{
+  const salt=crypto.getRandomValues(new Uint8Array(16));
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt']).then(k=>{
+    const iv=crypto.getRandomValues(new Uint8Array(12));
+    return crypto.subtle.encrypt({name:'AES-GCM',iv},k,new TextEncoder().encode(JSON.stringify(DB))).then(ct=>{
+      const out={salt:btoa(String.fromCharCode(...salt)),iv:btoa(String.fromCharCode(...iv)),data:btoa(String.fromCharCode(...new Uint8Array(ct)))};
+      downloadFile('oneiro.enc',JSON.stringify(out),'application/json');toast('Đã xuất mã hóa')
+    })
+  })
+}).catch(()=>toast('Lỗi'))}
+function openSketchModal(){
+  const m=document.createElement('div');m.style.cssText='position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px';
+  m.innerHTML=`<div class="glass card" style="max-width:560px;width:100%"><h2>Vẽ phác cảnh mơ</h2>
+    <canvas id="sk" width="500" height="340" style="width:100%;background:#fff;border-radius:16px;touch-action:none"></canvas>
+    <div class="row" style="margin-top:10px">
+      <button class="btn sm" data-x="save">Lưu vào giấc mơ</button>
+      <button class="btn sm" data-x="clear">Xóa</button>
+      <button class="btn sm" data-x="close">Đóng</button>
+    </div></div>`;
+  document.body.appendChild(m);
+  const c=m.querySelector('#sk'),ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);
+  ctx.strokeStyle='#111';ctx.lineWidth=2;ctx.lineJoin='round';let draw=false;
+  const pos=e=>{const r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height}};
+  c.addEventListener('pointerdown',e=>{draw=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)});
+  c.addEventListener('pointermove',e=>{if(!draw)return;const p=pos(e);ctx.lineTo(p.x,p.y);ctx.stroke()});
+  c.addEventListener('pointerup',()=>draw=false);
+  c.addEventListener('pointerleave',()=>draw=false);
+  m.onclick=e=>{const b=e.target.closest('[data-x]');if(!b)return;const a=b.dataset.x;
+    if(a==='save'){const data=c.toDataURL('image/png');const d=DB.dreams.find(x=>x.id===editingId)||DB.dreams[DB.dreams.length-1];if(d){d.sketch=data;saveDB();toast('Đã lưu phác thảo')}else toast('Lưu giấc mơ trước')}
+    if(a==='clear'){ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height)}
+    if(a==='close'){m.remove()}
+  };
+}
+
+/* ================= GLOBAL EVENTS ================= */
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-a]');
+  if(!b)return;
+  const fn=A[b.dataset.a];
+  if(fn){try{fn(b.dataset.id,b)}catch(err){console.error(err);toast('Lỗi: '+err.message)}}
+});
+document.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.dataset.s){const k=t.dataset.s;DB.set[k]=t.type==='checkbox'?t.checked:t.value;if(k==='researchMode')DB.researchMode=t.checked?1:0;saveDB();applySet()}
+  else if(t.id==='rcAuto'){DB.set.rcAuto=t.checked?1:0;saveDB();setupNotificationTimers()}
+  else if(t.id==='lgTrack'){window.lgTrack=t.checked;document.body.classList.toggle('lg-track',t.checked)}
+  else if(t.id==='bt'){DB.bt=t.value||'23:00';saveDB();renderTonight()}
+  else if(t.id==='pickDream'){if(t.value){DB.target=+t.value;saveDB();renderTonight()}}
+  else if(t.id==='langSel'){DB.set.lang=t.value;saveDB();buildNav();go(currentTab)}
+  else if(t.id==='scEn'){DB.set.shortcuts=t.checked?1:0;saveDB()}
+  else if(t.dataset.c){DB.chk[day()]={...DB.chk[day()],[t.dataset.c]:t.checked?1:0};saveDB()}
+  else if(t.dataset.h){DB.habits[day()]={...DB.habits[day()],[t.dataset.h]:t.checked?1:0};saveDB()}
+  else if(t.id==='cAc'){DB.set.ac=t.value;DB.set.acu=1;saveDB();applySet();renderMe()}
+  else if(t.id==='impFile'){const file=t.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{
+    try{const j=JSON.parse(r.result);if(!Array.isArray(j.dreams))throw new Error('not valid');
+      if(confirm('Ghi đè toàn bộ dữ liệu hiện tại?')){DB={...DEF,...j,set:{...DEF.set,...(j.set||{})},self:{...DEF.self,...(j.self||{})}};saveDB();location.reload()}
+    }catch{try{
+      const j=JSON.parse(r.result);if(j.data&&j.salt&&j.iv){const pw=prompt('Mật khẩu giải mã:');if(pw)decryptImport(j,pw);else toast('Đã hủy')}
+    }catch{toast('Tệp không hợp lệ')}}
+  };r.readAsText(file)}
+});
+function decryptImport(j,pw){crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']).then(base=>{
+  const salt=Uint8Array.from(atob(j.salt),c=>c.charCodeAt(0)),iv=Uint8Array.from(atob(j.iv),c=>c.charCodeAt(0)),data=Uint8Array.from(atob(j.data),c=>c.charCodeAt(0));
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']).then(k=>
+    crypto.subtle.decrypt({name:'AES-GCM',iv},k,data).then(pt=>{
+      const jj=JSON.parse(new TextDecoder().decode(pt));
+      if(confirm('Ghi đè dữ liệu hiện tại?')){DB={...DEF,...jj,set:{...DEF.set,...(jj.set||{})}};saveDB();location.reload()}
+    })
+  )
+}).catch(()=>toast('Sai mật khẩu'))}
+
+/* ================= NOTIFICATIONS + TIMERS ================= */
+let rcT=null,waterT=null,eyeT=null;
+function setupNotificationTimers(){
+  clearInterval(rcT);
+  if(DB.set.rcAuto&&'Notification'in window&&Notification.permission==='granted'){
+    rcT=setInterval(()=>{try{new Notification('Oneiro · Kiểm tra thực tại',{body:'Bạn có đang mơ không?'});navigator.vibrate?.(120)}catch{}},DB.set.rcInterval*60*1000);
+  }
+  clearInterval(waterT);clearInterval(eyeT);
+  if(DB.set.waterRemind){waterT=setInterval(()=>{try{new Notification('Uống nước',{body:'Đã uống nước chưa?'})}catch{}},2*3600*1000)}
+  if(DB.set.eyeRemind){eyeT=setInterval(()=>{try{new Notification('Nghỉ mắt',{body:'Nhìn xa 20 giây'})}catch{}},20*60*1000)}
+}
+
+/* ================= KEYBOARD SHORTCUTS ================= */
+document.addEventListener('keydown',e=>{
+  if(DB.set.shortcuts===0)return;
+  if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
+  if(e.key==='n'||e.key==='N'){e.preventDefault();go('journal')}
+  else if(e.key==='s'||e.key==='S'){if(currentTab==='journal')A.save()}
+  else if(e.key==='r'||e.key==='R'){A.rcNow()}
+  else if(e.key==='Escape'){const m=document.querySelector('.glass.card[style*="fixed"]');if(m)m.remove()}
+});
+
+/* ================= LIQUID GLASS TRACK ================= */
+(function(){
+  try{const C=JSON.parse(localStorage.getItem('oneiro.lg')||'{}');window.lgTint=!!C.tint;window.lgTrack=C.track!==false;document.body.classList.toggle('lg-tint',!!C.tint);document.body.classList.toggle('lg-track',C.track!==false)}catch{window.lgTrack=true;document.body.classList.add('lg-track')}
+  const sv=()=>{try{localStorage.setItem('oneiro.lg',JSON.stringify({tint:!!window.lgTint,track:window.lgTrack!==false}))}catch{}};
+  const rm=matchMedia('(prefers-reduced-motion:reduce)');
+  addEventListener('pointermove',e=>{if(window.lgTrack===false||rm.matches)return;const g=e.target.closest&&e.target.closest('.glass');if(!g)return;const r=g.getBoundingClientRect();g.style.setProperty('--mx',e.clientX-r.left+'px');g.style.setProperty('--my',e.clientY-r.top+'px')},{passive:true});
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('.lgb');if(b){window.lgTint=b.dataset.t==='1';document.body.classList.toggle('lg-tint',window.lgTint);sv();document.querySelectorAll('.lgb').forEach(x=>x.classList.toggle('on',(x.dataset.t==='1')===window.lgTint))}
+  });
+})();
+
+/* ================= SCROLL ================= */
+let ly=scrollY,rf=0;
+addEventListener('scroll',()=>{const nav=document.getElementById('nav');const y=scrollY;
+  if(innerWidth>=1024){nav.classList.remove('min');ly=y;return}
+  if(y>ly+10&&y>90&&!nav.classList.contains('min')){nav.classList.add('min');moveInd()}
+  else if(y<ly-10&&nav.classList.contains('min')){nav.classList.remove('min');moveInd()}
+  ly=y;
+  try{requestAnimationFrame(moveInd)}catch{}
+},{passive:true});
+addEventListener('resize',moveInd);
+
+/* ================= PWA SW ================= */
+if('serviceWorker'in navigator){
+  const sw=`self.addEventListener('install',e=>{self.skipWaiting()});
+    self.addEventListener('fetch',e=>{e.respondWith(caches.open('oneiro-v4').then(c=>c.match(e.request).then(r=>r||fetch(e.request).then(res=>{try{c.put(e.request,res.clone())}catch{};return res}).catch(()=>c.match(e.request)))))})`;
+  try{const blob=new Blob([sw],{type:'application/javascript'});const url=URL.createObjectURL(blob);navigator.serviceWorker.register(url).catch(()=>{})}catch{}
+}
+
+/* ================= INIT ================= */
+buildNav();
+applySet();
+go('tonight');
+setupNotificationTimers();
+// PIN lock check
+if(sessionStorage.getItem('locked')==='1'&&DB.set.pinHash){
+  document.body.innerHTML=`<div style="position:fixed;inset:0;display:grid;place-items:center;padding:20px">
+    <div class="glass card" style="max-width:400px;width:100%"><h2>Oneiro bị khóa</h2>
+      <p class="hint">Nhập PIN để mở.</p>
+      <input type="password" id="pinIn" placeholder="PIN" inputmode="numeric" autofocus>
+      <button class="btn p w" style="margin-top:10px" onclick="window.__unlock()">Mở khóa</button></div></div>`;
+  window.__unlock=()=>{const v=document.getElementById('pinIn').value;crypto.subtle.digest('SHA-256',new TextEncoder().encode('oneiro.pin:'+v)).then(b=>{const h=btoa(String.fromCharCode(...new Uint8Array(b)));if(h===DB.set.pinHash){sessionStorage.removeItem('locked');location.reload()}else toast('Sai PIN')})};
+}
+// Auto-save autosave on interval
+setInterval(()=>{saveDB()},15000);
+// nightly cleanup
+if(DB.draft&&Date.now()-DB.draft.at>7*864e5){DB.draft=null;saveDB()}
+
+</script>
+</body></html>
